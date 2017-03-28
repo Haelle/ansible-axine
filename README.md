@@ -17,5 +17,10 @@ ansible localhost
 ansible -i ec2.py -u ubuntu eu-central-1 -m ping
 
 ### Requirements
+
+#### for Windows control
+pip install "pywinrm>=0.2.2"
+
+#### for AWS control
 - boto
 - `~/.boto`config file with credentials
