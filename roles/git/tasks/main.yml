@@ -1,0 +1,5 @@
+---
+- name: Install & Configure git for users list
+  include: git_setup.yml
+  with_items: "{{ usernames }}"
+  tags: git

@@ -1,0 +1,12 @@
+---
+- name: Install tmux
+  include_role:
+    name: tmux
+
+- name: Install ag
+  include_role:
+    name: ag
+
+- name: Install git
+  include_role:
+    name: git

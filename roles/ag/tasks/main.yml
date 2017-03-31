@@ -1,0 +1,5 @@
+---
+- name: Install & Configure ag for users list
+  include: ag_setup.yml
+  with_items: "{{ usernames }}"
+  tags: ag

@@ -1,0 +1,13 @@
+---
+- name: Install ag
+  apt:
+    name: silversearcher-ag
+    state: latest
+
+- name: Copy agignore file for {{ item }}
+  become_user: '{{ item }}'
+  copy:
+    src:    './files/agignore'
+    dest:   '~/.agignore'
+    mode:   '0644'
+
