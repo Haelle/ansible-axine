@@ -4,8 +4,8 @@
     name: silversearcher-ag
     state: latest
 
-- name: Copy agignore file for {{ item }}
-  become_user: '{{ item }}'
+- name: Copy agignore file for {{ user.name }}
+  become_user: '{{ user.name }}'
   copy:
     src:    './files/agignore'
     dest:   '~/.agignore'

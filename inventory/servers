@@ -1,4 +1,4 @@
 [axine-vps]
-alxs.fr ansible_ssh_pass={{root_password}}
+alxs ansible_ssh_host=alxs.fr ansible_ssh_pass={{root_password}}
 
 [aws]

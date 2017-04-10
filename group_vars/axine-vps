@@ -1,0 +1,9 @@
+server_users:
+  - name: ***REMOVED***
+    ssh-key: https://github.com/haelle.keys
+    email: ***REMOVED***
+    fullname: ***REMOVED***
+  - name: line
+    ssh-key:
+    email: ***REMOVED***
+    fullname: ***REMOVED***

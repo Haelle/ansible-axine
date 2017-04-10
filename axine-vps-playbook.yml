@@ -4,14 +4,8 @@
   become: true
   vars_files:
     - './secrets/users_secrets.yml'
-  vars:
-    http_port: 80
-    max_clients: 200
-    axine_users:
-      - ***REMOVED***
-      - line
 
   roles:
-    #- { role: base_packages, user: "***REMOVED***" }
-    - { role: development_user, usernames: "{{ axine_users }}"}
+    - { role: base_packages }
+    - { role: development_user, users: "{{ server_users }}"}
 

@@ -1,12 +1,15 @@
 ---
-- name: Install tmux
-  include_role:
-    name: tmux
+- name: Install & Configure ag for users list
+  include: ag_setup.yml user={{ item }}
+  with_items: "{{ users }}"
+  tags: ag
 
-- name: Install ag
-  include_role:
-    name: ag
+- name: Install & Configure git for users list
+  include: git_setup.yml user={{ item }}
+  with_items: "{{ users }}"
+  tags: git
 
-- name: Install git
-  include_role:
-    name: git
+- name: Install & Configure tmux for users list
+  include: tmux_setup.yml user={{ item }}
+  with_items: "{{ users }}"
+  tags: tmux

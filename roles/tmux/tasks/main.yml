@@ -1,5 +1,0 @@
----
-- name: Install & Configure tmux for users list
-  include: tmux_setup.yml
-  with_items: "{{ usernames }}"
-  tags: tmux

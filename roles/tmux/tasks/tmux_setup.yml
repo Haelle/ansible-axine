@@ -1,3 +1,0 @@
----
-- name: Install tmux standard setup
-  include: tmux_standard_setup.yml username="{{ item }}"
