@@ -40,3 +40,4 @@
     - pandoc
     - lynx
     - lftp
+    - whois

@@ -1,21 +1,15 @@
 ---
-- name: Create users
+- name: User creation
   user:
-    name: '{{ item }}'
-    groups: 'sudo'
-    state: present
-  with_items: '{{ usernames }}'
+    name: "{{ item.name }}"
+    groups: sudo
+    password: "{{ item.password if item.password is defined else '!' }}"
+  with_items: "{{ users }}"
 
 - name: Set authorized key for users
   authorized_key:
-    user: '{{ item.key }}'
+    user: '{{ item.name }}'
     state: present
-    key: '{{ item.value.ssh_key}}'
-  with_dict: '{{ users }}'
-
-- name: Set authorized key for all users in deploy
-  authorized_key:
-    user: deploy
-    state: present
-    key: '{{ item.value.ssh_key }}'
-  with_dict: '{{ users }}'
+    key: '{{ item.ssh_key }}'
+  with_items: "{{ users }}"
+  when: item.ssh_key is defined

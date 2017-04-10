@@ -1,11 +1,12 @@
 ---
-- hosts: axine-vps
+- hosts: axine-vps-ssh
   remote_user: root
   become: true
   vars_files:
     - './secrets/users_secrets.yml'
 
   roles:
-    - { role: base_packages }
+    - { role: base_packages, tags: base }
+    - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
 
