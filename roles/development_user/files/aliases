@@ -1,0 +1,37 @@
+# Unix
+alias tlf="tail -f"
+alias tree="tree -LAC 3"
+
+# ls
+alias ls='ls --color=auto'
+alias ll='ls -alFh'
+alias la='ls -A'
+alias l='ls -CF'
+
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# tmux
+alias tmux='tmux -2'
+
+# git
+alias gs='git status'
+alias gdiff="git difftool -y -x 'colordiff -y -W $COLUMNS'"
+
+# Rails
+alias rsw='rails s -b www.alxs.fr -p 3000'
+alias test-reset="RAILS_ENV=test rails db:environment:set db:setup"
+alias sr="spring rspec"
+
+# bundle
+alias bg='bundle exec guard'
+
+flip() { echo "（╯°□°）╯ ┻━┻"; }
+
+# Aliases for zsh coloration
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'

@@ -1,0 +1,43 @@
+---
+- name: Install zsh package
+  apt:
+    name:  zsh
+    state: present
+  become: yes
+
+- name: Set zsh as default interpreter
+  user:
+    name: "{{ user.name }}"
+    shell: /usr/bin/zsh
+  become: yes
+
+- name: Copy zshrc configuration file
+  copy:
+    src:  './files/zshrc'
+    dest: '~/.zshrc'
+    mode: '0644'
+  become_user: '{{ user.name }}'
+  register: zshrc_copy
+
+- name: Copy aliases configuration file
+  copy:
+    src:  './files/aliases'
+    dest: '~/.aliases'
+    mode: '0644'
+  become_user: '{{ user.name }}'
+  register: aliases_copy
+
+- name: Copy completion & functions files
+  copy:
+    src:  './files/zsh/'
+    dest: '~/.zsh/'
+    mode: '0644'
+  become_user: '{{ user.name }}'
+  register: zsh_misc_copy
+
+- name: Reload zsh configuration
+  shell: source ~/.zshrc
+  args:
+    executable: /bin/bash
+  become_user: '{{ user.name }}'
+  when: zshrc_copy|changed or aliases_copy|changed or zsh_misc_copy|changed

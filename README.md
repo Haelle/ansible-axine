@@ -1,26 +1,27 @@
 # Ansible Dev
 ***
 
-Ansible script to deploy my dev env
+### TODO
+add Oh My Zsh support
+https://github.com/robbyrussell/oh-my-zsh
+add zsh completion support
+https://github.com/zsh-users/zsh-completions
+
+## Introduction
+Ansible script to deploy axine dev server
 
 - install my dotfiles
 - configure Vim & plugins
-- configure zsh
+- configure zsh, tmux, ag, git
+- basic packages
 - Python dev env
 - Rails dev env (with RVM)
 
 ## Basic command line
-ansible localhost
-
-### Test ec2 connection
-./ec2.py --list
-ansible -i ec2.py -u ubuntu eu-central-1 -m ping
+`ansible-playbook axine-vps-playbook.yml`
 
 ### Requirements
+Python on target server
 
 #### for Windows control
 pip install "pywinrm>=0.2.2"
-
-#### for AWS control
-- boto
-- `~/.boto`config file with credentials
