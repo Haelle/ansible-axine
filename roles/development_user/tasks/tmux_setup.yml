@@ -41,4 +41,3 @@
 - name: Install tmux plugins for {{ user.name }}
   become_user: '{{ user.name }}'
   command: '~/.tmux/plugins/tpm/bin/install_plugins'
-

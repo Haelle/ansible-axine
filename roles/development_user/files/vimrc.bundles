@@ -44,7 +44,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'pearofducks/ansible-vim'
 
-
 " js / angular
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'pangloss/vim-javascript'

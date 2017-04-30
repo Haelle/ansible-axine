@@ -136,6 +136,11 @@ nnoremap <leader>a :Ack
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 
+" Syntastic + Angular.js
+let g:syntastic_html_tidy_ignore_errors=["proprietary attribute \"", "<form> lacks \"action\" attribute", "discarding unexpected", "is not recognized!", "trimming empty <i>", "discarding unexpected </"]
+let g:used_javascript_libs = 'jquery,angularjs'
+let g:syntastic_javascript_checkers = ['jshint']
+
 " Cucumber navigation commands
 autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
 autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
@@ -176,12 +181,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <leader>d :Dash<cr>
-
-" Syntastic + Angular.js
-let g:syntastic_html_tidy_ignore_errors=["proprietary attribute \"", "<form> lacks \"action\" attribute", "discarding unexpected", "is not recognized!", "trimming empty <i>", "discarding unexpected </"]
-let g:used_javascript_libs = 'jquery,angularjs'
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_ruby_mri_exec = "/Users/skelz0r/.rvm/rubies/ruby-2.2.0/bin/ruby"
 
 imap ,/ </<C-X><C-O><ESC>x
 
@@ -224,4 +223,3 @@ set t_Co=256
 
 " remap Ctrl+n to open Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
-

@@ -5,3 +5,4 @@ alxs ansible_ssh_host=alxs.fr ansible_ssh_pass={{root_password}}
 alxs ansible_ssh_host=alxs.fr
 
 [aws]
+sam ansible_ssh_host=ec2-54-93-233-165.eu-central-1.compute.amazonaws.com ansible_ssh_user=testance ansible_ssh_pass=aaa
