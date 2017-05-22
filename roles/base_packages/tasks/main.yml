@@ -41,3 +41,5 @@
     - lynx
     - lftp
     - whois
+    - python3-tk
+    - libpq5
