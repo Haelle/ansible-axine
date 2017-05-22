@@ -17,6 +17,7 @@ set hidden					" buffer can exist in background
 colors peachpuff
 set modeline
 set modelines=1
+set t_Co=256
 
 " Turn off swap files
 set nobackup
@@ -216,11 +217,10 @@ set ttyfast                        " rendering
 set list lcs=tab:▸\ ,eol:¬,trail:· " show all characters
 colorscheme desert                 " my color scheme
 
-" Format the status line plugin options (vim-airline)
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-set t_Co=256
-
 " remap Ctrl+n to open Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
+
+" set the colors of the tabline
+hi TabLineFill ctermfg=Black ctermbg=Black
+hi TabLine ctermfg=White ctermbg=DarkGreen
+hi TabLineSel ctermfg=Black ctermbg=Yellow

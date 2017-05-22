@@ -32,9 +32,6 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
-# expand functions in the prompt
-setopt prompt_subst
-
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL

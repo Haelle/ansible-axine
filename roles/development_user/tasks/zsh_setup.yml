@@ -19,6 +19,13 @@
   become_user: '{{ user.name }}'
   register: zshrc_copy
 
+- name: Copy zlogin configuration file
+  copy:
+    src:  './files/zlogin'
+    dest: '~/.zlogin'
+    mode: '0644'
+  become_user: '{{ user.name }}'
+
 - name: Copy aliases configuration file
   copy:
     src:  './files/aliases'
