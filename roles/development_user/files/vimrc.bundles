@@ -43,6 +43,7 @@ Bundle 'edkolev/tmuxline.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'pearofducks/ansible-vim'
+Bundle 'hwartig/vim-seeing-is-believing'
 
 " js / angular
 Bundle 'vim-scripts/HTML-AutoCloseTag'

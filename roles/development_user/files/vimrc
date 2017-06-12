@@ -2,18 +2,18 @@
 let mapleader=","
 
 " General config
-set history=1000		" big phat history
-set ruler         	" show the cursor position all the time
-set showcmd       	" display incomplete commands
-set incsearch     	" do incremental searching
-set laststatus=2  	" Always display the status line
-set number        	" Line numbers are good
-set gdefault      	" subtitutions globally on lines
-set showmode        " Show current mode down the bottom
-set gcr=a:blinkon0  " Disable cursor blink
-set visualbell      " No sounds
-set autoread        " Reload files changed outside vim
-set hidden					" buffer can exist in background
+set history=1000   " big phat history
+set ruler          " show the cursor position all the time
+set showcmd        " display incomplete commands
+set incsearch      " do incremental searching
+set laststatus=2   " Always display the status line
+set number         " Line numbers are good
+set gdefault       " subtitutions globally on lines
+set showmode       " Show current mode down the bottom
+set gcr=a:blinkon0 " Disable cursor blink
+set visualbell     " No sounds
+set autoread       " Reload files changed outside vim
+set hidden         " buffer can exist in background
 colors peachpuff
 set modeline
 set modelines=1
@@ -80,28 +80,25 @@ endif
 set wildmode=list:longest,list:full
 set complete=.,w,t
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 augroup END
 
 " Keep undo
@@ -143,10 +140,6 @@ let g:syntastic_html_tidy_ignore_errors=["proprietary attribute \"", "<form> lac
 let g:used_javascript_libs = 'jquery,angularjs'
 let g:syntastic_javascript_checkers = ['jshint']
 
-" Cucumber navigation commands
-autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-
 " vim-rspec
 let g:rspec_command = "Dispatch bundle exec ./bin/rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
@@ -170,9 +163,6 @@ let g:html_indent_tags = 'li\|p'
 "" Markdown
 " Set syntax highlighting for specific file types
 au BufRead,BufNewFile *.md set filetype=markdown
-
-" Automatically wrap at 80 characters for Markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " Finally, local config
 if filereadable($HOME . "/.vimrc.local")
@@ -224,3 +214,23 @@ map <C-n> :NERDTreeToggle<CR>
 hi TabLineFill ctermfg=Black ctermbg=Black
 hi TabLine ctermfg=White ctermbg=DarkGreen
 hi TabLineSel ctermfg=Black ctermbg=Yellow
+
+" Auto filetype
+autocmd BufNewFile,BufRead *.html.twig set syntax=html
+autocmd BufNewFile,BufRead *.md.erb    set syntax=markdown
+autocmd BufNewFile,BufRead *.xml.erb   set syntax=xml
+
+" Enable seeing-is-believing mappings only for Ruby
+augroup seeingIsBelievingSettings
+  autocmd!
+
+  autocmd FileType ruby nmap <buffer> <F6> <Plug>(seeing-is-believing-mark-and-run)
+  autocmd FileType ruby xmap <buffer> <F6> <Plug>(seeing-is-believing-mark-and-run)
+
+  autocmd FileType ruby nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  autocmd FileType ruby imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+
+  autocmd FileType ruby nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+  autocmd FileType ruby imap <buffer> <F5> <Plug>(seeing-is-believing-run)
+augroup END

@@ -7,6 +7,9 @@ https://github.com/robbyrussell/oh-my-zsh
 add zsh completion support
 https://github.com/zsh-users/zsh-completions
 
+add RVM support
+install some gems => seeing_is_believing
+
 ## Introduction
 Ansible script to deploy axine dev server
 
