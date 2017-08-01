@@ -1,0 +1,24 @@
+---
+- name: Install Apache
+  apt:
+    name: '{{ item }}'
+    state: installed
+  with_items:
+    - apache2
+    - apache2-utils
+    - libcgi-fast-perl
+    - libapache2-mod-fcgid
+
+- name: Check if fcgid is enabled
+  shell: '/usr/sbin/apachectl -M | grep -i cgi'
+  register: fcgid_check
+
+- name: enable fcgid if not enabled
+  become: true
+  shell: 'a2enmod fcgid'
+  when: fcgid_check.stdout != ' fcgid_module (shared)'
+
+- name: Install Munin master
+  apt:
+    name: munin
+    state: installed

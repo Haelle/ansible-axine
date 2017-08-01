@@ -9,4 +9,5 @@
     - { role: base_packages, tags: base }
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
+    - { role: munin-master }
 

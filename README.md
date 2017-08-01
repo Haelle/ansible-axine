@@ -25,6 +25,11 @@ Ansible script to deploy axine dev server
 
 ### Requirements
 Python on target server
+Allow ssh connection for root user:
+`sudo vim /etc/ssh/sshd_config`
+Set: PermitRootLogin yes
+Reload sshd config
+`sudo service sshd reload`
 
 #### for Windows control
 pip install "pywinrm>=0.2.2"
