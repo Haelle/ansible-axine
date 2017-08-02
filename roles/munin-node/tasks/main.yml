@@ -1,0 +1,16 @@
+---
+- name: Install Munin to the node
+  apt:
+    name: munin-node
+    state: installed
+  tags: munin-node
+
+- name: update munin-node.conf
+  lineinfile:
+    path: /etc/munin/munin-node.conf
+    regexp: '^allow \^\d+\\.\d+\\.\d+\\.\d+\$'
+    line: 'allow ^{{ munin_master_ip | regex_replace("\.", "\.") }}$'
+    state: present
+  tags: munin-node
+  notify:
+    - restart munin-node

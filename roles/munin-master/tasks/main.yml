@@ -2,3 +2,7 @@
 - name: Install Munin master and dependencies
   include: install.yml
   tags: munin-master
+
+- name: Configure Munin master
+  include: conf.yml
+  tags: munin-master

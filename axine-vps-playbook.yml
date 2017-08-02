@@ -10,4 +10,6 @@
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
     - { role: munin-master }
+    #- { role: munin-node, munin_master_ip: "{{ axine_ip }}" }
+    #- { role: munin-master-add-node, node_name: 'axine_as_node', node_ip: "{{ axine_ip }}" }
 

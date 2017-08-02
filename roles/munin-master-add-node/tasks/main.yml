@@ -1,0 +1,14 @@
+---
+- name: insert block in munin.conf
+  blockinfile:
+    path: /etc/munin/munin.conf
+    block: |
+      [MuninNode-{{ node_name }}]
+          address {{ node_ip }}
+          use_node_name yes
+    insertafter: EOF
+  notify:
+    - restart apache2
+    - restart munin-node
+  tags:
+    - munin-master-add-node

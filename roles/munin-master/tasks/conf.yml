@@ -1,0 +1,81 @@
+---
+- name: Update munin.conf (dbdir)
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^(#\s*)?dbdir\s*\/var\/lib\/munin'
+    line: 'dbdir     /var/lib/munin'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: Update munin.conf (htmldir)
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^(#\s*)?htmldir*'
+    line: 'htmldir   /var/www/munin'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: Update munin.conf (logdir)
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^(#\s*)?logdir\s*\/var\/log\/munin'
+    line: 'logdir    /var/log/munin'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: Update munin.conf (rundir)
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^(#\s*)?rundir\s*\/var\/run\/munin'
+    line: 'rundir    /var/run/munin'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: Update munin.conf (tmpldir)
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^(#\s*)?tmpldir\s*\/etc\/munin\/templates'
+    line: 'tmpldir /etc/munin/templates'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: create /var/www/munin directory
+  file:
+    path: /var/www/munin
+    state: directory
+    owner: munin
+    group: munin
+
+- name: Rename server identifier to MuninMaster
+  lineinfile:
+    path: /etc/munin/munin.conf
+    regexp: '^\[(localhost\.localdomain|MuninMaster)\]'
+    line: '[MuninMaster]'
+    state: present
+  notify:
+    - restart munin-node
+
+- name: Copy apache.conf template file
+  copy:
+    src: './files/apache.conf'
+    dest: '/etc/munin/apache.conf'
+    mode: 0644
+  notify:
+    - restart apache2
+
+- name: create apache conf-available symlink (should already exists)
+  file:
+    src: /etc/munin/apache.conf
+    path: /etc/apache2/conf-available/munin.conf
+    state: link
+
+- name: create apache conf-enabled symlink (should already exists)
+  file:
+    src: /etc/apache2/conf-available/munin.conf
+    path: /etc/apache2/conf-enabled/munin.conf
+    state: link

@@ -15,7 +15,9 @@
     update_cache: yes
 
 - name : Install base packages
-  include: install_package.yml
+  apt:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - htop
     - curl

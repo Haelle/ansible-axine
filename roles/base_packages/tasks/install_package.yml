@@ -1,5 +1,0 @@
----
-- name: Install package {{ item }}
-  apt:
-    name: "{{ item }}"
-    state: latest
