@@ -7,7 +7,7 @@
 - name: Copy gitignore file for {{ user.name }}
   become_user: '{{ user.name }}'
   template:
-    src:    './templates/gitconfig.j2'
+    src:    './gitconfig.j2'
     dest:   '~/.gitconfig'
     mode:   '0644'
 

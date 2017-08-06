@@ -12,3 +12,10 @@
               line="PermitRootLogin no"
               state=present
   notify: Restart ssh
+
+- name: Passwordless users
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '\%sudo.+ALL=\(ALL:ALL\).+ALL'
+    line: '%sudo ALL=(ALL:ALL) NOPASSWD: ALL'
+    state: present

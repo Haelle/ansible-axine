@@ -1,7 +1,9 @@
 ---
 - hosts: bxine
-  remote_user: root
+  remote_user: ***REMOVED*** #root
   become: true
+  vars:
+    server_ip: "{{ bxine_ip }}"
   vars_files:
     - './secrets/users_secrets.yml'
 

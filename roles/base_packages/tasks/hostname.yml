@@ -1,0 +1,10 @@
+---
+- name: Rename server
+  hostname:
+    name: "{{ hostname }}"
+
+- name: update hosts file
+  become: true
+  template:
+    src: ./hosts.j2
+    dest: /etc/hosts

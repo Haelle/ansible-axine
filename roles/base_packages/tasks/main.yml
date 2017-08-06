@@ -1,4 +1,8 @@
 ---
+- name: Rename server
+  include: hostname.yml
+  tags: base
+
 - name: Ensure Apitude is installed
   apt:
     name: aptitude
@@ -45,7 +49,3 @@
     - whois
     - python3-tk
     - libpq5
-
-- name: Rename server
-  hostname:
-    name: "{{ hostname }}"

@@ -1,5 +1,5 @@
 - name: restart munin-node
   service:
-    name: munin-node
+    name: munin_node
     state: restarted
   tags: munin_node

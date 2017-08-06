@@ -2,6 +2,8 @@
 - hosts: axine
   remote_user: root
   become: true
+  vars:
+    server_ip: "{{ axine_ip }}"
   vars_files:
     - './secrets/users_secrets.yml'
 
