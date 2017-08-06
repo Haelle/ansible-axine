@@ -45,3 +45,7 @@
     - whois
     - python3-tk
     - libpq5
+
+- name: Rename server
+  hostname:
+    name: "{{ hostname }}"

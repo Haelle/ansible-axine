@@ -15,7 +15,7 @@
 - name: Install Vundle (vim plugin manager)
   git:
     repo: 'https://github.com/VundleVim/Vundle.vim.git'
-    dest: '~/.vim/bundle/Vundle.vim'
+    dest: '~/.vim/bundle/vundle'
   become_user: "{{ user.name }}"
 
 - name: Copy vimrc
@@ -30,11 +30,9 @@
     src:  'vimrc.bundles'
     dest: '~/.vimrc.bundles'
     mode: '0644'
-  register: vimrc_bundles_copy
   become_user: "{{ user.name }}"
 
 - name: Install vim plugins
   shell: vim +PluginInstall +qall
   become: yes
   become_user: "{{ user.name }}"
-  when: vimrc_bundles_copy|changed

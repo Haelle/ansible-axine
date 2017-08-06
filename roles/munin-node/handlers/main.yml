@@ -2,4 +2,4 @@
   service:
     name: munin-node
     state: restarted
-  tags: munin-node
+  tags: munin_node

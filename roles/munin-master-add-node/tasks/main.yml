@@ -11,4 +11,4 @@
     - restart apache2
     - restart munin-node
   tags:
-    - munin-master-add-node
+    - munin_master_add_node

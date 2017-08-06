@@ -1,8 +1,12 @@
-[axine-vps]
-alxs ansible_ssh_host=alxs.fr ansible_ssh_pass={{root_password}}
+axine-vps ansible_ssh_host=alxs.fr
+bxine-vps ansible_ssh_host=b.alxs.fr
 
-[axine-vps-ssh]
-alxs ansible_ssh_host=alxs.fr
+[axine]
+axine-vps
 
-[aws]
-sam ansible_ssh_host=ec2-54-93-233-165.eu-central-1.compute.amazonaws.com ansible_ssh_user=testance ansible_ssh_pass=aaa
+[bxine]
+bxine-vps
+
+[vps]
+axine-vps
+bxine-vps

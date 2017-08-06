@@ -3,7 +3,7 @@
   apt:
     name: munin-node
     state: installed
-  tags: munin-node
+  tags: munin_node
 
 - name: update munin-node.conf
   lineinfile:
@@ -11,6 +11,6 @@
     regexp: '^allow \^\d+\\.\d+\\.\d+\\.\d+\$'
     line: 'allow ^{{ munin_master_ip | regex_replace("\.", "\.") }}$'
     state: present
-  tags: munin-node
+  tags: munin_node
   notify:
-    - restart munin-node
+    - restart munin_node

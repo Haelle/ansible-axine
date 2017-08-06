@@ -1,5 +1,5 @@
 ---
-- hosts: axine
+- hosts: bxine
   remote_user: root
   become: true
   vars_files:
@@ -9,6 +9,4 @@
     - { role: base_packages, tags: base }
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
-    - { role: munin-master }
-    - { role: munin-master-add-node, node_name: 'bxine_as_node', node_ip: "{{ bxine_ip }}" }
-
+    - { role: munin-node, munin_master_ip: "{{ bxine_ip }}" }
