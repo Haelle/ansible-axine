@@ -1,0 +1,20 @@
+- name: Delete previous template file
+  file: >
+    path={{ nginx_path }}/sites-available/15-default.conf
+    state=absent
+
+- name: Force logrotate configuration (Fix postrotate command in Ubuntu 16)
+  template: src=logrotate.nginx.conf dest=/etc/logrotate.d/nginx
+  tags: nginx-logrotate
+
+- name: Template nginx conf
+  copy:
+    src: ./files/nginx.conf
+    dest: '{{ nginx_path }}/nginx.conf'
+  notify: restart nginx
+  tags: default_nginx_conf
+
+- name: Add Ban Anytime IP conf
+  template: src=ban_anytime_ip.conf.j2 dest={{ nginx_path }}/ban_anytime_ip.conf
+  notify: restart nginx
+  tags: default_nginx_conf
