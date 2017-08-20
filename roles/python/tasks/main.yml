@@ -1,0 +1,13 @@
+---
+- name : Install Python packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python3-pip
+    - python-pip
+
+- name: Update PIP
+  shell: pip install --upgrade pip
+
+# SpacePy !
