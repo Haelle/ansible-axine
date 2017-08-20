@@ -1,0 +1,47 @@
+---
+- name: Git clone repository
+  git:
+    repo: https://github.com/janeczku/calibre-web.git
+    dest: /var/www/calibre-{{ calibre_name }}
+
+- name: Install requirements for root user
+  become: true
+  shell: pip install -r requirements.txt
+  args:
+    chdir: /var/www/calibre-{{ calibre_name }}
+
+- name: Create systemctl service
+  template:
+    src: cps.service.j2
+    dest: /etc/systemd/system/{{ calibre_name }}.service
+    mode: 0644
+
+- name: Enable {{ calibre_name }} service
+  shell: systemctl enable {{ calibre_name }}.service
+  become: true
+
+- name: Start {{ calibre_name }} service
+  shell: systemctl start {{ calibre_name }}.service
+  become: true
+
+- name: Copy Nginx conf
+  template:
+    src: nginx_conf.j2
+    dest: /etc/nginx/sites-available/{{ calibre_name }}.conf
+    mode: 0644
+
+- name: symlink to site enabled
+  file:
+    src: /etc/nginx/sites-available/{{ calibre_name }}.conf
+    path: /etc/nginx/sites-enabled/{{ calibre_name }}.conf
+    state: link
+
+- name: restart Nginx service
+  service:
+    name: nginx
+    state: restarted
+
+# TODO manually:
+# go to b.alxs.fr:8083 and change the port to the right one in the config
+# go to {{ calibre_name }}.alxs.fr and set the Dropbox repository
+# go to {{ calibre_name }}.alxs.fr and change the admin password
