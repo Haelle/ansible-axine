@@ -9,6 +9,11 @@
 
   roles:
     - { role: base_packages, tags: base }
+    - { role: nginx, tags: ngnix, mina_deploy: true }
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
+    - { role: python, tags: python }
+    - { role: dropbox, tags: dropbox }
+    - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085 }
+    - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8083 }
     - { role: munin-node, munin_master_ip: "{{ bxine_ip }}" }
