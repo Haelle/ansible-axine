@@ -18,4 +18,4 @@
     - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085 }
     - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086 }
     - { role: calibre-web, tags: calibre, calibre_name: comics, calibre_port: 8087 }
-    - { role: munin-node, munin_master_ip: "{{ bxine_ip }}" }
+    - { role: munin-node, munin_master_ip: "{{ axine_ip }}" }

@@ -3,7 +3,7 @@
   blockinfile:
     path: /etc/munin/munin.conf
     block: |
-      [MuninNode-{{ node_name }}]
+      [{{ node_name }}]
           address {{ node_ip }}
           use_node_name yes
     insertafter: EOF
