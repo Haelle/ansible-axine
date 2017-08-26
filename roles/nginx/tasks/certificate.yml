@@ -1,0 +1,52 @@
+---
+- name: Add certbot repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: Install packages for certifs
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - software-properties-common
+    - python-certbot-nginx
+    - letsencrypt
+
+- name: copy and decrypt certifcates & cie
+  copy:
+    src:  ./files/letsencrypt/
+    dest: /etc/letsencrypt/
+  become: true
+
+- name: symlink pem files to live (cert.pem)
+  file:
+    src:  /etc/letsencrypt/archive/alexandrie.alxs.fr/cert.pem
+    dest: /etc/letsencrypt/live/alexandrie.alxs.fr/cert.pem
+    state: link
+  become: true
+
+- name: symlink pem files to live (chain.pem)
+  file:
+    src:  /etc/letsencrypt/archive/alexandrie.alxs.fr/chain.pem
+    dest: /etc/letsencrypt/live/alexandrie.alxs.fr/chain.pem
+    state: link
+  become: true
+
+- name: symlink pem files to live (fullchain.pem)
+  file:
+    src:  /etc/letsencrypt/archive/alexandrie.alxs.fr/fullchain.pem
+    dest: /etc/letsencrypt/live/alexandrie.alxs.fr/fullchain.pem
+    state: link
+  become: true
+
+- name: symlink pem files to live (privkey.pem)
+  file:
+    src:  /etc/letsencrypt/archive/alexandrie.alxs.fr/privkey.pem
+    dest: /etc/letsencrypt/live/alexandrie.alxs.fr/privkey.pem
+    state: link
+  become: true
+
+- name: auto-renew certif
+  shell: certbot renew --dry-run
+  become: true
