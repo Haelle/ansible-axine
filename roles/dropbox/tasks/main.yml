@@ -28,4 +28,7 @@
 # dropbox exclude item item
 
 - name: Exlude some folder
-  shell: dropbox exclude anti-ennui discovery ebds ebooks-old ensiie epresse filter_img logs
+  shell: dropbox exclude anti-ennui discovery ebooks-old ensiie epresse filter_img logs
+
+- name: Dropbox auto-start
+  shell: dropbox autostart y

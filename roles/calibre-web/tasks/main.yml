@@ -41,6 +41,12 @@
     name: nginx
     state: restarted
 
+- name: Create symlink to Sqlite database
+  file:
+    src: "{{ dropbox_folder }}/calibre-web-configs/{{ calibre_name }}-app.db"
+    path: /var/www/calibre-{{ calibre_name }}/app.db
+    state: link
+
 # TODO manually:
 # go to b.alxs.fr:8083 and change the port to the right one in the config
 # go to {{ calibre_name }}.alxs.fr and set the Dropbox repository

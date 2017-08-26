@@ -4,6 +4,7 @@
   become: true
   vars:
     server_ip: "{{ bxine_ip }}"
+    dropbox_folder: /home/***REMOVED***/Dropbox
   vars_files:
     - './secrets/users_secrets.yml'
 
@@ -15,5 +16,6 @@
     - { role: python, tags: python }
     - { role: dropbox, tags: dropbox }
     - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085 }
-    - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8083 }
+    - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086 }
+    - { role: calibre-web, tags: calibre, calibre_name: comics, calibre_port: 8087 }
     - { role: munin-node, munin_master_ip: "{{ bxine_ip }}" }
