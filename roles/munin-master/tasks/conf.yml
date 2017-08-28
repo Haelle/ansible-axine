@@ -60,22 +60,26 @@
   notify:
     - restart munin-node
 
-- name: Copy apache.conf template file
+- name: Copy nginx.conf template file
   copy:
-    src: './files/apache.conf'
-    dest: '/etc/munin/apache.conf'
+    src: './files/nginx.conf'
+    dest: '/etc/munin/nginx.conf'
     mode: 0644
   notify:
-    - restart apache2
+    - restart nginx
 
-- name: create apache conf-available symlink (should already exists)
+- name: create nginx conf-available symlink (should already exists)
   file:
-    src: /etc/munin/apache.conf
-    path: /etc/apache2/conf-available/munin.conf
+    src: /etc/munin/nginx.conf
+    path: /etc/nginx/sites-available/munin.conf
     state: link
+  notify:
+    - restart nginx
 
-- name: create apache conf-enabled symlink (should already exists)
+- name: create nginx conf-enabled symlink (should already exists)
   file:
-    src: /etc/apache2/conf-available/munin.conf
-    path: /etc/apache2/conf-enabled/munin.conf
+    src: /etc/nginx/sites-available/munin.conf
+    path: /etc/nginx/sites-enabled/munin.conf
     state: link
+  notify:
+    - restart nginx

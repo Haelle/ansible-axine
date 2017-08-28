@@ -18,6 +18,10 @@
     upgrade: dist
     update_cache: yes
 
+- name: Install & Configure Uncomplicated Firewall (ufw)
+  include: ufw.yml
+  tags: ufw
+
 - name : Install base packages
   apt:
     name: "{{ item }}"

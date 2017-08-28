@@ -14,3 +14,11 @@
   tags: munin_node
   notify:
     - restart munin_node
+
+- name: add Munin tu UFW
+  ufw:
+    rule: allow
+    port: 4949
+    proto: tcp
+    state: reloaded
+  tags: ufw

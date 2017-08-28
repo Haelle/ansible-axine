@@ -1,6 +1,6 @@
 ---
 - hosts: axine
-  remote_user: root
+  remote_user: ***REMOVED*** #root
   become: true
   vars:
     server_ip: "{{ axine_ip }}"
@@ -11,6 +11,7 @@
     - { role: base_packages, tags: base }
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
+    - { role: nginx, tags: nginx, mina_deploy: true }
     - { role: munin-master }
     - { role: munin-master-add-node, node_name: 'bxine', node_ip: "{{ bxine_ip }}" }
 

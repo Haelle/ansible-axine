@@ -1,24 +1,21 @@
 ---
-- name: Install Apache
-  apt:
-    name: '{{ item }}'
-    state: installed
-  with_items:
-    - apache2
-    - apache2-utils
-    - libcgi-fast-perl
-    - libapache2-mod-fcgid
-
-- name: Check if fcgid is enabled
-  shell: '/usr/sbin/apachectl -M | grep -i cgi'
-  register: fcgid_check
-
-- name: enable fcgid if not enabled
-  become: true
-  shell: 'a2enmod fcgid'
-  when: fcgid_check.stdout != ' fcgid_module (shared)'
-
 - name: Install Munin master
   apt:
     name: munin
     state: installed
+
+- name: Allow self inspection
+  lineinfile:
+    path: /etc/munin/munin-node.conf
+    line: allow ^127.0.0.1$
+    state: present
+  notify:
+    - restart munin-node
+
+- name: add Munin tu UFW
+  ufw:
+    rule: allow
+    port: 4949
+    proto: tcp
+    state: reloaded
+  tags: ufw
