@@ -15,6 +15,7 @@
     - { role: development_user, users: "{{ server_users }}"}
     - { role: python, tags: python }
     - { role: dropbox, tags: dropbox }
+    - { role: alxs-certificates, tags: certif }
     - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085 }
     - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086 }
     - { role: calibre-web, tags: calibre, calibre_name: comics, calibre_port: 8087 }

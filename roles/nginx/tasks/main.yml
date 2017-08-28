@@ -6,7 +6,3 @@
 - name: Nginx conf
   include: nginx_conf.yml
   tags: nginx_conf
-
-- name: Certificates
-  include: certificate.yml
-  tags: certif
