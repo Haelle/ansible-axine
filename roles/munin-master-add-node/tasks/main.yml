@@ -8,7 +8,7 @@
           use_node_name yes
     insertafter: EOF
   notify:
-    - restart apache2
+    - restart nginx
     - restart munin-node
   tags:
     - munin_master_add_node
