@@ -16,14 +16,6 @@
     dest: /etc/systemd/system/{{ calibre_name }}.service
     mode: 0644
 
-- name: Enable {{ calibre_name }} service
-  shell: systemctl enable {{ calibre_name }}.service
-  become: true
-
-- name: Start {{ calibre_name }} service
-  shell: systemctl start {{ calibre_name }}.service
-  become: true
-
 - name: Copy Nginx conf
   template:
     src: nginx_conf.j2
@@ -36,18 +28,39 @@
     path: /etc/nginx/sites-enabled/{{ calibre_name }}.conf
     state: link
 
-- name: restart Nginx service
-  service:
-    name: nginx
-    state: restarted
-
 - name: Create symlink to Sqlite database
   file:
     src: "{{ dropbox_folder }}/calibre-web-configs/{{ calibre_name }}-app.db"
     path: /var/www/calibre-{{ calibre_name }}/app.db
     state: link
 
+- name: Install Google Analytics
+  include_role:
+    name: google-analytics
+  vars:
+    google_files_list: ["/var/www/calibre-{{ calibre_name }}/cps/templates/read.html", "/var/www/calibre-{{ calibre_name }}/cps/templates/layout.html"]
+  when: google_tag_id is defined
+  tags: google-analytics
+
+- name: Add event tracking
+  include: google_analytics.yml
+  tags: google-analytics
+
 # TODO manually:
 # go to b.alxs.fr:8083 and change the port to the right one in the config
 # go to {{ calibre_name }}.alxs.fr and set the Dropbox repository
 # go to {{ calibre_name }}.alxs.fr and change the admin password
+
+- name: Enable {{ calibre_name }} service
+  systemd:
+    name: "{{ calibre_name }}.service"
+    enabled: yes
+    state: restarted
+  become: true
+  tags: google-analytics
+
+- name: restart Nginx service
+  service:
+    name: nginx
+    state: restarted
+  tags: google-analytics

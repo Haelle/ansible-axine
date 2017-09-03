@@ -1,0 +1,10 @@
+---
+- name: Add event tracking in js
+  blockinfile:
+    path: /var/www/calibre-{{ calibre_name }}/cps/static/js/main.js
+    block: |
+      book_id = e.relatedTarget.href.match(/http.+\/calibre-.+\/book\/(\d+)/)[1];
+      gtag('event', 'book-details', { 'id': book_id });
+    insertafter: '\$\.get\(e\.relatedTarget\.href\)\.done\(function\(content\) \{'
+    marker: "// {mark} Send Google event"
+  tags: google-analytics
