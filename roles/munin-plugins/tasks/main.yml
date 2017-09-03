@@ -1,0 +1,5 @@
+---
+- name: Install Nginx plugin
+  include: nginx.yml
+  tags:
+    - munin_plugins

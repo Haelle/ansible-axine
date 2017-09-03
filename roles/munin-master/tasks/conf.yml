@@ -83,3 +83,7 @@
     state: link
   notify:
     - restart nginx
+
+- name: add Munin plugins
+  include_role:
+    name: munin-plugins

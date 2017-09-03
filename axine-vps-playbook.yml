@@ -12,6 +12,6 @@
     - { role: create_users, users: "{{ server_users }}" }
     - { role: development_user, users: "{{ server_users }}"}
     - { role: nginx, tags: nginx, mina_deploy: true }
-    - { role: munin-master }
-    - { role: munin-master-add-node, node_name: 'bxine', node_ip: "{{ bxine_ip }}" }
+    - { role: munin-master, tags: munin }
+    - { role: munin-master-add-node, tags: munin, node_name: 'bxine', node_ip: "{{ bxine_ip }}" }
 

@@ -1,5 +1,10 @@
+---
+- name: restart nginx
+  service:
+   name: nginx
+   state: restarted
+
 - name: restart munin-node
   service:
     name: munin-node
     state: restarted
-  tags: munin_node

@@ -19,4 +19,4 @@
     - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085, google_tag_id: 'UA-105707307-1' }
     - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086, google_tag_id: 'UA-105707307-2' }
     - { role: calibre-web, tags: calibre, calibre_name: comics, calibre_port: 8087, google_tag_id: 'UA-105707307-3' }
-    - { role: munin-node, munin_master_ip: "{{ axine_ip }}" }
+    - { role: munin-node, tags: munin,  munin_master_ip: "{{ axine_ip }}" }

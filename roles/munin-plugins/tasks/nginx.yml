@@ -1,0 +1,43 @@
+---
+- name: Install libwww-perl
+  apt:
+    name: libwww-perl
+    state: present
+
+- name: copy nginx default conf
+  copy:
+    src:  ./files/default
+    dest: /etc/nginx/sites-available/default
+    mode: 0644
+  notify:
+    - restart nginx
+
+- name: create symlink to enabled
+  file:
+    src: /etc/nginx/sites-available/default
+    path: /etc/nginx/sites-enabled/default
+    state: link
+  notify:
+    - restart nginx
+
+- name: update plugin conf
+  blockinfile:
+    path: /etc/munin/plugin-conf.d/munin-node
+    block: |
+      [nginx*]
+      env.url http://127.0.0.1/nginx_status
+    insertafter: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK NGINX-PLUGIN"
+  notify:
+    - restart nginx
+
+- name: munin plugin symlink
+  file:
+    src: /usr/share/munin/plugins/{{ item }}
+    path: /etc/munin/plugins/{{ item }}
+    state: link
+  with_items:
+    - nginx_request
+    - nginx_status
+  notify:
+    - restart munin-node

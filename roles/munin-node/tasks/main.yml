@@ -13,7 +13,13 @@
     state: present
   tags: munin_node
   notify:
-    - restart munin_node
+    - restart munin-node
+
+- name: add Munin plugins
+  include_role:
+    name: munin-plugins
+  notify:
+    - restart munin-node
 
 - name: add Munin tu UFW
   ufw:
