@@ -2,7 +2,7 @@
 - name: Install Munin master
   apt:
     name: munin
-    state: installed
+    state: latest
 
 - name: Allow self inspection
   lineinfile:

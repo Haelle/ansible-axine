@@ -44,6 +44,18 @@
   notify:
     - restart munin-node
 
+- name: Insert email configuration block
+  blockinfile:
+    path: /etc/munin/munin.conf
+    block: |
+      contacts {{ server_users[0]['name'] }}
+      contact.{{ server_users[0]['name'] }}.command mail -s "[Munin notif] ${var:host}" {{ server_users[0]['email'] }}
+      contact.{{ server_users[0]['name'] }}.always_send warning critical
+    insertbefore: BOF
+    marker: "# {mark} ANSIBLE BLOCK emails notifications"
+  notify:
+    - restart munin-node
+
 - name: create /var/www/munin directory
   file:
     path: /var/www/munin

@@ -1,0 +1,45 @@
+---
+- name: Install Postfix
+  apt:
+    name: postfix
+    state: latest
+  notify:
+    - restart postfix
+
+- name: Copy main.cf
+  copy:
+    src: ./files/main.cf
+    dest: /etc/postfix/mail.cf
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart postfix
+
+- name: Copy sender_relay
+  template:
+    src: ./templates/sender_relay.j2
+    dest: /etc/postfix/sender_relay
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart postfix
+
+- name: Copy sasl_passwd
+  template:
+    src: ./templates/sasl_passwd.j2
+    dest: /etc/postfix/sasl_passwd
+    mode: 0600
+    owner: root
+    group: root
+  notify:
+    - restart postfix
+
+- name: run postmap
+  command: postmap sasl_passwd sender_relay
+  args:
+    chdir: /etc/postfix
+  become: true
+  notify:
+    - restart postfix
