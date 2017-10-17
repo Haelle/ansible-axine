@@ -56,6 +56,7 @@
     name: "{{ calibre_name }}.service"
     enabled: yes
     state: restarted
+    daemon_reload: yes
   become: true
   tags: google-analytics
 
