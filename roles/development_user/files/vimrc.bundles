@@ -48,7 +48,7 @@ Bundle 'hwartig/vim-seeing-is-believing'
 " js / angular
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'pangloss/vim-javascript'
-Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'matthewsimo/angular-vim-snippets'
+Bundle 'posva/vim-vue'
 
 filetype on
