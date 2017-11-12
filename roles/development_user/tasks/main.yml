@@ -23,3 +23,8 @@
   include: zsh_setup.yml user={{ item }}
   with_items: "{{ users }}"
   tags: zsh
+
+- name: Install & configure NodeJs + nvm
+  include: nodejs.yml user={{ item }}
+  with_items: "{{ users }}"
+  tags: node
