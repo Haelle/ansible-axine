@@ -1,0 +1,44 @@
+---
+- name: install hubiC dependencies
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: latest
+  with_items:
+    - mono-runtime
+    - libmono-posix4.0-cil
+    - libmono-sqlite4.0-cil
+    - libmono-system4.0-cil
+    - libmono-system-configuration4.0-cil
+    - libmono-system-core4.0-cil
+    - libmono-system-data4.0-cil
+    - libmono-system-data-datasetextensions4.0-cil
+
+- name: install hubiC from package
+  apt:
+    deb: http://mir7.ovh.net/ovh-applications/hubic/hubiC-Linux/2.1.0/hubiC-Linux-2.1.0.53-linux.deb
+
+- name: just in case fix installation...
+  command: 'apt-get install --fix-broken -y'
+
+  #- name: configure dbus-daemon
+  #command: export DBUS_SESSION_BUS_ADDRESS=`dbus-daemon --session --fork --print-address`
+
+- name: create hubiC directory
+  become_user: ***REMOVED***
+  file:
+    path: ~/hubiC
+    state: directory
+
+- name: copy hubiC_password file
+  become_user: ***REMOVED***
+  template:
+    src: './hubiC_password.j2'
+    dest: '~/.hubiC_password'
+    mode: '0644'
+
+- name: login to hubiC
+  become_user: ***REMOVED***
+  command: 'hubic login --password_path=.hubiC_password ***REMOVED*** ~/hubiC'
+  args:
+    chdir: ~/

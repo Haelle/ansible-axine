@@ -7,6 +7,8 @@
     dropbox_folder: /home/***REMOVED***/Dropbox
   vars_files:
     - './secrets/users_secrets.yml'
+  environment:
+    DBUS_SESSION_BUS_ADDRESS: 'unix:abstract=/tmp/dbus-dlLfFBSth0,guid=1433a1d6adf840465c78abda5a291c93'
 
   roles:
     - { role: base_packages, tags: base }
@@ -15,6 +17,7 @@
     - { role: development_user, users: "{{ server_users }}"}
     - { role: python, tags: python }
     - { role: dropbox, tags: dropbox }
+    - { role: hubiC, tags: hubiC }
     - { role: alxs-certificates, tags: certif }
     - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085, google_tag_id: 'UA-105707307-1' }
     - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086, google_tag_id: 'UA-105707307-2' }
