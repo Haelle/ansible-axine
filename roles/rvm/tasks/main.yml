@@ -1,0 +1,15 @@
+---
+- name: Install RVM pre-requisites
+  apt:
+    name: software-properties-common
+    state: latest
+
+- name: Add RVM repository
+  apt_repository:
+    repo: ppa:rael-gc/rvm
+    state: present
+
+- name: Install RVM
+  apt:
+    name: rvm
+    update_cache: yes
