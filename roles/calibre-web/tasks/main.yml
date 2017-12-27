@@ -30,9 +30,10 @@
 
 - name: Create symlink to Sqlite database
   file:
-    src: "{{ dropbox_folder }}/calibre-web-configs/{{ calibre_name }}-app.db"
+    src: "{{ cloud_folder }}/autres/calibre-web-configs/{{ calibre_name }}-app.db"
     path: /var/www/calibre-{{ calibre_name }}/app.db
     state: link
+  tags: calibre-db
 
 - name: Install Google Analytics
   include_role:
