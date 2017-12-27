@@ -1,0 +1,17 @@
+---
+- name: install desktop packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - xdotool
+    - keepass
+    - chromium
+    - calibre
+
+- name: Passwordless users
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '\%sudo.+ALL=\(ALL:ALL\).+ALL'
+    line: '%sudo ALL=(ALL:ALL) NOPASSWD: ALL'
+    state: present

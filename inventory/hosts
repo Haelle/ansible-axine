@@ -1,3 +1,4 @@
+localhost ansible_connection=local
 axine-vps ansible_ssh_host=alxs.fr
 bxine-vps ansible_ssh_host=b.alxs.fr
 
@@ -10,3 +11,6 @@ bxine-vps
 [vps]
 axine-vps
 bxine-vps
+
+[local]
+localhost

@@ -8,3 +8,4 @@
   template:
     src: ./hosts.j2
     dest: /etc/hosts
+  when: server_ip is defined

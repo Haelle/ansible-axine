@@ -1,5 +1,4 @@
 # Ansible Dev
-***
 
 ### TODO
 add Oh My Zsh support

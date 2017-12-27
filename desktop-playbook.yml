@@ -1,0 +1,12 @@
+---
+- hosts: local
+  remote_user: ***REMOVED***
+  become: true
+  vars_files:
+    - './secrets/users_secrets.yml'
+
+  roles:
+    - { role: base_packages, tags: base }
+    - { role: development_user, users: "{{ desktop_user }}", tags: dev }
+    - { role: nginx, mina_deploy: true, tags: nginx }
+    - { role: desktop, tags: desktop }
