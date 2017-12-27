@@ -5,9 +5,11 @@
     state: latest
   with_items:
     - xdotool
-    - keepass
-    - chromium
+    - keepass2
+    - chromium-browser
     - calibre
+    - unity-tweak-tool
+    #- gnome-tweak-tool
 
 - name: Passwordless users
   lineinfile:
