@@ -1,0 +1,23 @@
+- name: Install redis package
+  apt:
+    name: redis-server
+    state: present
+  notify: restart redis-server
+
+# - name: Add Redis configuration
+#   template:
+#     src: redis_conf.j2
+#     dest: /etc/redis/redis.conf
+#   notify: restart redis-server
+
+- name: Enable autorestart redis-server
+  systemd:
+    name: redis.service
+    daemon_reload: yes
+    enabled: yes
+  notify: restart redis-server
+
+- name: Ensure redis-server is started
+  systemd:
+    name: redis.service
+    state: started
