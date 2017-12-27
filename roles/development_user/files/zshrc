@@ -76,7 +76,7 @@ else
   PS1+="%B%{$fg[yellow]%}%#%{$reset_color%}%b "       # prompt delimitor in bold yellow + space
 fi
 
-export PATH="$HOME/bin:$HOME/.bin:./bin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:./bin:/snap/bin:$PATH"
 
 # locales customs
 if [ -e "$HOME/.zshrc.local" ]; then

@@ -1,5 +1,9 @@
 # Ansible Dev
 
+# Post playbook install
+NodeJS installation is not handled by the role.
+Run : `nvm install 9.3`
+
 ### TODO
 add Oh My Zsh support
 https://github.com/robbyrussell/oh-my-zsh
