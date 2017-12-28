@@ -8,6 +8,10 @@
     - keepass2
     - chromium-browser
     - calibre
+    - vlc
+    - browser-plugin-vlc
+    - steam
+    - skype
     - unity-tweak-tool
     #- gnome-tweak-tool
 
