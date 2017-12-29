@@ -29,15 +29,18 @@ NodeJS installation is not handled by the role.
 Run : `nvm install 9.3`
 
 ## Informations complémentaires
-Pour avoir un grub fr:
+Grub is a bit touchy it's not done by Ansible yet...
+
+### Change keyboard
+For a fr grub :
 
 `sudo grub-kbdcomp -o /boot/grub/fr.gkb fr`
 
-Dans `/etc/default/grub` :
+In `/etc/default/grub` :
 
 `GRUB_TERMINAL_INPUT="at_keyboard"`
 
-Dans `/etc/grub.d/40_custom` :
+In `/etc/grub.d/40_custom` :
 
 ````
 #!/bin/sh
@@ -47,7 +50,11 @@ insmod keylayouts
 keymap /boot/grub/fr.gkb
 ````
 
-Et enfin :
+### Set a password
+
+
+### And update grub
+And finally :
 
 `sudo update-grub`
 
