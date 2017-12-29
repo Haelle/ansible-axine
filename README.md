@@ -1,6 +1,6 @@
 # Ansible Axine
 
-### TODO
+#### TODO
 add Oh My Zsh support
 https://github.com/robbyrussell/oh-my-zsh
 
@@ -26,9 +26,14 @@ ansible-playbook desktop-playbook.yml
 
 ## Post playbook install
 NodeJS installation is not handled by the role.
+
 Run : `nvm install 9.3`
 
-## Informations complémentaires
+Install **Private** encrypted directory:
+
+`ecryptfs-setup-private`
+
+## Grub: Informations complémentaires
 Grub is a bit touchy it's not done by Ansible yet...
 
 ### Change keyboard
@@ -49,9 +54,6 @@ exec tail -n +3 $0
 insmod keylayouts
 keymap /boot/grub/fr.gkb
 ````
-
-### Set a password
-
 
 ### And update grub
 And finally :

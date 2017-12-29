@@ -6,12 +6,15 @@
   with_items:
     - xdotool
     - keepass2
+    - ecryptfs-utils
     - chromium-browser
     - calibre
     - vlc
     - browser-plugin-vlc
     - steam
-    - skype
+    - openjdk-8-jre
+    - vlc
+    - notify-osd
     - unity-tweak-tool
     #- gnome-tweak-tool
 
