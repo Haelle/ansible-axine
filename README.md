@@ -33,6 +33,13 @@ Install **Private** encrypted directory:
 
 `ecryptfs-setup-private`
 
+### Gnome Shell Extension
+Open it with `gnome-shell-extension-prefs`:
+
+- System monitor in user menu
+- Dash to Dock
+- hubiC indicator
+
 ## Grub: Informations complémentaires
 Grub is a bit touchy it's not done by Ansible yet...
 
