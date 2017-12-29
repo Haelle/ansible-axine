@@ -1,30 +1,55 @@
-# Ansible Dev
-
-# Post playbook install
-NodeJS installation is not handled by the role.
-Run : `nvm install 9.3`
+# Ansible Axine
 
 ### TODO
 add Oh My Zsh support
 https://github.com/robbyrussell/oh-my-zsh
+
 add zsh completion support
 https://github.com/zsh-users/zsh-completions
 
-add RVM support
+add Rbenv support
 install some gems => seeing_is_believing
 
 ## Introduction
-Ansible script to deploy axine dev server
+This Ansible configures:
 
-- install my dotfiles
-- configure Vim & plugins
-- configure zsh, tmux, ag, git
-- basic packages
-- Python dev env
-- Rails dev env (with RVM)
+- personnal desktop
+- master server (for dev)
+- slave website server 
 
-## Basic command line
-`ansible-playbook axine-vps-playbook.yml`
+## Basic command lines
+````
+ansible-playbook axine-vps-playbook.yml
+ansible-playbook bxine-vps-playbook.yml
+ansible-playbook desktop-playbook.yml
+````
+
+## Post playbook install
+NodeJS installation is not handled by the role.
+Run : `nvm install 9.3`
+
+## Informations complémentaires
+Pour avoir un grub fr:
+
+`sudo grub-kbdcomp -o /boot/grub/fr.gkb fr`
+
+Dans `/etc/default/grub` :
+
+`GRUB_TERMINAL_INPUT="at_keyboard"`
+
+Dans `/etc/grub.d/40_custom` :
+
+````
+#!/bin/sh
+exec tail -n +3 $0
+
+insmod keylayouts
+keymap /boot/grub/fr.gkb
+````
+
+Et enfin :
+
+`sudo update-grub`
 
 ### Requirements
 Python on target server
@@ -33,6 +58,3 @@ Allow ssh connection for root user:
 Set: PermitRootLogin yes
 Reload sshd config
 `sudo service sshd reload`
-
-#### for Windows control
-pip install "pywinrm>=0.2.2"
