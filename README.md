@@ -36,7 +36,7 @@ Install **Private** encrypted directory:
 ### Gnome Shell Extension
 Open it with `gnome-shell-extension-prefs`:
 
-- System monitor in user menu
+- System monitor
 - Dash to Dock
 - hubiC indicator
 
