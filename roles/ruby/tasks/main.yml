@@ -5,8 +5,8 @@
     default_ruby: 2.4.2
     version: v1.1.1
     env: system
-    rbenv_owner: '***REMOVED***'
-    rbenv_group: '***REMOVED***'
+    rbenv_owner: '{{ user_1_name }}'
+    rbenv_group: '{{ user_1_name }}'
     rubies:
       - version: 2.4.2
   tags: ['rbenv']

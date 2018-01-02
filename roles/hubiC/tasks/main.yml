@@ -25,20 +25,20 @@
   #command: export DBUS_SESSION_BUS_ADDRESS=`dbus-daemon --session --fork --print-address`
 
 - name: create hubiC directory
-  become_user: ***REMOVED***
+  become_user: '{{ user_1_name }}'
   file:
     path: ~/hubiC
     state: directory
 
 - name: copy hubiC_password file
-  become_user: ***REMOVED***
+  become_user: '{{ user_1_name }}'
   template:
     src: './hubiC_password.j2'
     dest: '~/Private/.hubiC_password'
     mode: '0644'
 
 - name: login to hubiC
-  become_user: ***REMOVED***
-  command: 'hubic login --password_path=.hubiC_password ***REMOVED*** ~/hubiC'
+  become_user: '{{ user_1_name }}'
+  command: hubic login --password_path=Private/.hubiC_password {{ user_1_email }} ~/hubiC
   args:
     chdir: ~/

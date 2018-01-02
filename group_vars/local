@@ -1,6 +1,6 @@
 ---
 hostname: esteban
 desktop_user:
-  - name: ***REMOVED***
-    fullname: ***REMOVED***
-    email: ***REMOVED***
+  - name: '{{ user_1_name }}'
+    fullname: '{{ user_1_fullname }}'
+    email: '{{ user_1_email }}'

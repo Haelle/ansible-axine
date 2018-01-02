@@ -1,6 +1,6 @@
 ---
 - hosts: local
-  remote_user: ***REMOVED***
+  remote_user: '{{ user_1_name }}'
   become: true
   vars_files:
     - './secrets/users_secrets.yml'

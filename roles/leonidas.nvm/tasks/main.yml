@@ -29,7 +29,7 @@
   tags: nvm
 
 #- name: Install {{ nvm.node_version }}
-#  command: sudo -iu ***REMOVED*** nvm install {{ nvm.node_version }}
+#  command: sudo -iu {{ user_1_name }} nvm install {{ nvm.node_version }}
 #  tags: nvm
 #
 #- name: Check if {{ nvm.node_version }} is the default node version

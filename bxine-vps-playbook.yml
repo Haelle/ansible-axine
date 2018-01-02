@@ -1,10 +1,10 @@
 ---
 - hosts: bxine
-  remote_user: ***REMOVED*** #root
+  remote_user: '{{ user_1_name }}' #root
   become: true
   vars:
     server_ip: "{{ bxine_ip }}"
-    cloud_folder: /home/***REMOVED***/hubiC
+    cloud_folder: /home/{{ user_1_name }}/hubiC
   vars_files:
     - './secrets/users_secrets.yml'
   environment:

@@ -4,6 +4,6 @@
     name: leonidas.nvm
   vars:
     nvm:
-      user: ***REMOVED***
+      user: '{{ user_1_name }}'
       version: HEAD
       node_version: '9.3'

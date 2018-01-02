@@ -1,6 +1,6 @@
 ---
 - hosts: axine
-  remote_user: ***REMOVED*** #root
+  remote_user: '{{ user_1_name }}' #root
   become: true
   vars:
     server_ip: "{{ axine_ip }}"
