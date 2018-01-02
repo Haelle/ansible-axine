@@ -1,6 +1,7 @@
 # Unix
 alias tlf="tail -f"
 alias tree="tree -LAC 3"
+alias ssh-id='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa'
 
 # ls
 alias ls='ls --color=auto'

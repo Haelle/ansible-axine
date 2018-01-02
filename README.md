@@ -1,13 +1,17 @@
 # Ansible Axine
 
 #### TODO
-add Oh My Zsh support
+add Oh My Zsh support:
 https://github.com/robbyrussell/oh-my-zsh
 
-add zsh completion support
+add zsh completion support:
 https://github.com/zsh-users/zsh-completions
 
+Grub theme:
+https://github.com/lfelipe1501/Atomic-GRUB2-Theme
+
 add Rbenv support
+
 install some gems => seeing_is_believing
 
 ## Introduction

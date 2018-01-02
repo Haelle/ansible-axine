@@ -7,7 +7,6 @@
     - xdotool
     - keepass2
     - ecryptfs-utils
-    - chromium-browser
     - calibre
     - vlc
     - browser-plugin-vlc

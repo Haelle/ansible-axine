@@ -30,8 +30,6 @@
     - htop
     - curl
     - cowsay
-    - ruby
-    - ruby-full
     - build-essential
     - libffi-dev
     - libssl-dev
