@@ -1,11 +1,17 @@
 ---
+- name: Add KeepassXC repository
+  apt_repository:
+    repo: 'ppa:phoerious/keepassxc'
+
 - name: install desktop packages
   apt:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - xdotool
-    - keepass2
+    - keepassxc
+    - openssh-server
     - ecryptfs-utils
     - calibre
     - vlc
@@ -13,9 +19,11 @@
     - steam
     - openjdk-8-jre
     - vlc
+    - rawtherapee
+    - gimp
     - notify-osd
     - unity-tweak-tool
-    #- gnome-tweak-tool
+    - gnome-tweak-tool
 
 - name: Passwordless users
   lineinfile:

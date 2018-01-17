@@ -43,6 +43,7 @@ Open it with `gnome-shell-extension-prefs`:
 - System monitor
 - Dash to Dock
 - hubiC indicator
+- Alt Tab Workspace
 
 ## Grub: Informations complémentaires
 Grub is a bit touchy it's not done by Ansible yet...

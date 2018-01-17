@@ -10,6 +10,7 @@
     - { role: development_user, users: "{{ desktop_user }}", tags: dev }
     - { role: nginx, mina_deploy: true, tags: nginx }
     - { role: ruby, tags: ruby }
+    - { role: redis, tags: redis }
     - { role: desktop, tags: desktop }
     - { role: dropbox, tags: dropbox }
     - { role: hubiC, tags: hubiC }
