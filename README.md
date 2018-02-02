@@ -45,6 +45,11 @@ Open it with `gnome-shell-extension-prefs`:
 - hubiC indicator
 - Alt Tab Workspace
 
+### Python virtual env
+Virtual envs are created in `~/.virtualenvs` and can be created with :
+
+`mkvirtualenv -p python3 <virtualenv_name>`
+
 ## Grub: Informations complémentaires
 Grub is a bit touchy it's not done by Ansible yet...
 

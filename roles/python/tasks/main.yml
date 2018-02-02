@@ -1,5 +1,5 @@
 ---
-- name : Install Python packages
+- name: Install Python packages
   apt:
     name: "{{ item }}"
     state: latest
@@ -10,4 +10,20 @@
 - name: Update PIP
   shell: pip install --upgrade pip
 
-# SpacePy !
+- name: install virtualenv packages
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - virtualenv
+    - virtualenvwrapper
+
+- name: update Zshrc file with virtualenv conf
+  blockinfile:
+    path: /home/{{ user_1_name }}/.zshrc
+    block: |
+      export WORKON_HOME=$HOME/.virtualenvs
+      export PROJECT_HOME=$HOME/projets
+      source /usr/local/bin/virtualenvwrapper.sh
+    insertafter: EOF
+    marker: "# {mark} Virtualenvwrapper"

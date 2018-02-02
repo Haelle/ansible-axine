@@ -14,3 +14,4 @@
     - { role: desktop, tags: desktop }
     - { role: dropbox, tags: dropbox }
     - { role: hubiC, tags: hubiC }
+    - { role: python, tags: python }
