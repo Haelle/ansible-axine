@@ -3,6 +3,13 @@
   apt_repository:
     repo: 'ppa:phoerious/keepassxc'
 
+- name: remove buggy packages
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - indicator-application # top bar indicator (old Unity) in conflict with the new system (Gnome)
+
 - name: install desktop packages
   apt:
     name: "{{ item }}"
