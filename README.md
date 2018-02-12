@@ -19,7 +19,7 @@ This Ansible configures:
 
 - personnal desktop
 - master server (for dev)
-- slave website server 
+- slave website server
 
 ## Basic command lines
 ````
@@ -49,6 +49,14 @@ Open it with `gnome-shell-extension-prefs`:
 Virtual envs are created in `~/.virtualenvs` and can be created with :
 
 `mkvirtualenv -p python3 <virtualenv_name>`
+
+When you want to use a virtualenv just do:
+
+`workon <virtualenv_name>`
+
+To stop using it:
+
+`deactivate`
 
 ## Grub: Informations complémentaires
 Grub is a bit touchy it's not done by Ansible yet...
