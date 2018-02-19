@@ -42,6 +42,8 @@
     - notify-osd
     - unity-tweak-tool
     - gnome-tweak-tool
+    - exfat-fuse
+    - exfat-utils
 
 - name: Passwordless users
   lineinfile:
