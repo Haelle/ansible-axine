@@ -91,3 +91,14 @@
 - name: Skype
   command: sudo snap install skype --classic
   tags: skype
+
+- name: /!\ TEST /!\ TLP (power managment) & suggests
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - tlp
+    - acpi-call-dkms
+    - smart-notifier
+  tags: tlp
