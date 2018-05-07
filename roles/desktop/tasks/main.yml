@@ -2,16 +2,34 @@
 - name: Add KeepassXC repository
   apt_repository:
     repo: 'ppa:phoerious/keepassxc'
+  tags:
+    - keepass
+    - keepassx
+    - keepassxc
 
 - name: Add Insomnia apt key
   apt_key:
     url: https://insomnia.rest/keys/debian-public.key.asc
     state: present
+  tags: insomnia
 
 - name: Add Insomnia repository
   apt_repository:
     repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
     state: present
+  tags: insomnia
+
+- name: Add Google Chrome apt key
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state: present
+  tags: chrome
+
+- name: Add Google Chrome repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+    state: present
+  tags: chrome
 
 - name: remove buggy packages
   apt:
@@ -29,6 +47,7 @@
     - xdotool
     - keepassxc
     - insomnia
+    - google-chrome-stable
     - openssh-server
     - ecryptfs-utils
     - calibre
@@ -40,10 +59,11 @@
     - rawtherapee
     - gimp
     - notify-osd
-    - unity-tweak-tool
+#    - unity-tweak-tool
     - gnome-tweak-tool
     - exfat-fuse
     - exfat-utils
+    - meld
 
 - name: Passwordless users
   lineinfile:
@@ -54,9 +74,20 @@
 
 - name: RubyMine
   command: sudo snap install rubymine --classic
+  tags: rubymine
 
 - name: WebStorm
   command: sudo snap install webstorm --classic
+  tags: webstorm
 
 - name: PyCharm
   command: sudo snap install pycharm-community --classic
+  tags: pycharm
+
+- name: Slack
+  command: sudo snap install slack --classic
+  tags: slack
+
+- name: Skype
+  command: sudo snap install skype --classic
+  tags: skype
