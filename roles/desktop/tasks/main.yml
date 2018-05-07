@@ -51,3 +51,12 @@
     regexp: '\%sudo.+ALL=\(ALL:ALL\).+ALL'
     line: '%sudo ALL=(ALL:ALL) NOPASSWD: ALL'
     state: present
+
+- name: RubyMine
+  command: sudo snap install rubymine --classic
+
+- name: WebStorm
+  command: sudo snap install webstorm --classic
+
+- name: PyCharm
+  command: sudo snap install pycharm-community --classic
