@@ -7,18 +7,6 @@
     - keepassx
     - keepassxc
 
-- name: Add Insomnia apt key
-  apt_key:
-    url: https://insomnia.rest/keys/debian-public.key.asc
-    state: present
-  tags: insomnia
-
-- name: Add Insomnia repository
-  apt_repository:
-    repo: deb https://dl.bintray.com/getinsomnia/Insomnia /
-    state: present
-  tags: insomnia
-
 - name: Add Google Chrome apt key
   apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -46,7 +34,6 @@
   with_items:
     - xdotool
     - keepassxc
-    - insomnia
     - google-chrome-stable
     - openssh-server
     - ecryptfs-utils
@@ -64,6 +51,7 @@
     - exfat-fuse
     - exfat-utils
     - meld
+    - variety
 
 - name: Passwordless users
   lineinfile:
@@ -91,6 +79,9 @@
 - name: Skype
   command: sudo snap install skype --classic
   tags: skype
+
+- name: Insomnia
+  command: sudo snap install insomnia --classic
 
 - name: /!\ TEST /!\ TLP (power managment) & suggests
   apt:
