@@ -25,6 +25,7 @@
     update_cache: yes
   with_items:
     - xdotool
+    - keepassxc # TODO check if on Ubuntu 18.04
     - google-chrome-stable
     - openssh-server
     - ecryptfs-utils
@@ -75,11 +76,11 @@
   command: sudo snap install insomnia --classic
   tags: insomnia
 
-- name: KeepassXC
-  command: sudo snap install keepassxc --classic
-  tags:
-    - keepass
-    - keepassxc
+#- name: KeepassXC
+#  command: sudo snap install keepassxc --classic
+#  tags:
+#    - keepass
+#    - keepassxc
 
 - name: /!\ TEST /!\ TLP (power managment) & suggests
   apt:
