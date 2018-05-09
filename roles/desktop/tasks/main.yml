@@ -1,12 +1,4 @@
 ---
-- name: Add KeepassXC repository
-  apt_repository:
-    repo: 'ppa:phoerious/keepassxc'
-  tags:
-    - keepass
-    - keepassx
-    - keepassxc
-
 - name: Add Google Chrome apt key
   apt_key:
     url: https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -33,7 +25,6 @@
     update_cache: yes
   with_items:
     - xdotool
-    - keepassxc
     - google-chrome-stable
     - openssh-server
     - ecryptfs-utils
@@ -82,6 +73,13 @@
 
 - name: Insomnia
   command: sudo snap install insomnia --classic
+  tags: insomnia
+
+- name: KeepassXC
+  command: sudo snap install keepassxc --classic
+  tags:
+    - keepass
+    - keepassxc
 
 - name: /!\ TEST /!\ TLP (power managment) & suggests
   apt:
