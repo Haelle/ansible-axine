@@ -14,10 +14,10 @@ set gcr=a:blinkon0 " Disable cursor blink
 set visualbell     " No sounds
 set autoread       " Reload files changed outside vim
 set hidden         " buffer can exist in background
-colors peachpuff
 set modeline
 set modelines=1
 set t_Co=256
+set mouse-=a
 
 " Turn off swap files
 set nobackup
@@ -40,7 +40,7 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " for mark
 nnoremap ` '
-
+"
 "" fold
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
@@ -65,7 +65,7 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>v V`]
 
 " Display extra whitespace
-"set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:·
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -73,7 +73,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
   set hlsearch
 endif
-
+"
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
@@ -91,7 +91,6 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 augroup vimrcEx
   au!
-
   " When editing a file, always jump to the last known cursor position.
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
@@ -105,6 +104,14 @@ augroup END
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
 set undodir=~/.vim/backups
 set undofile
+
+" ALE Linter config :
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+" only on save
+let g:ale_lint_on_save = 1
 
 " For plugins
 if filereadable(expand("~/.vimrc.bundles"))
@@ -120,8 +127,14 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set backspace=2
-
 filetype plugin on
+" Tabulation no spaces
+"set autoindent
+"set smartindent
+"set noexpandtab
+"set tabstop=4
+"set shiftwidth=4
+"
 filetype indent on
 
 "" Ctags
@@ -130,19 +143,6 @@ map <Leader>ct :!ctags -R .<CR>
 
 " quick ctags
 nnoremap <leader>a :Ack
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_always_populate_loc_list = 1
-
-" Syntastic + Angular.js
-let g:syntastic_html_tidy_ignore_errors=["proprietary attribute \"", "<form> lacks \"action\" attribute", "discarding unexpected", "is not recognized!", "trimming empty <i>", "discarding unexpected </"]
-let g:used_javascript_libs = 'jquery,angularjs'
-let g:syntastic_javascript_checkers = ['jshint']
-
-" vim-rspec
-let g:rspec_command = "Dispatch bundle exec ./bin/rspec {spec}"
-let g:rspec_runner = "os_x_iterm"
 
 " vim-rspec mappings
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
@@ -180,32 +180,19 @@ autocmd VimResized * :normal =
 
 let g:slime_target = "tmux"
 
-" Dash
-nmap <silent> <leader>d <Plug>DashSearch
-
 nnoremap <Leader>c :tabclose<cr>
-
-" Emmet
-let g:user_emmet_leader_key='<C-y>'
-let g:user_emmet_install_global = 1
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-  set mouse-=a
-endif
 
 set backspace=indent,eol,start     " allow backspacing over everything in insert mode
 set encoding=utf-8                 " /o/
-"set si                             " smart indent
+"set si                            " smart indent
 set ignorecase                     " ignore case when tabbing
-" set cursorline                     " underline cursor
-set showmatch                      " show matching brackets
+" set cursorline                   " underline cursor
+set noshowmatch                    " show matching brackets
 set scrolloff=3                    " scroll to 3 lines
 set wrap                           " wrap lines !
 set ttyfast                        " rendering
 set list lcs=tab:▸\ ,eol:¬,trail:· " show all characters
-colorscheme desert                 " my color scheme
+colorscheme industry               " my color scheme
 
 " remap Ctrl+n to open Nerd Tree
 map <C-n> :NERDTreeToggle<CR>
