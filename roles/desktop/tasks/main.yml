@@ -76,6 +76,10 @@
   command: sudo snap install insomnia --classic
   tags: insomnia
 
+- name: GitKraken
+  command: sudo snap install gitkraken --classic
+  tags: gitkraken
+
 #- name: KeepassXC
 #  command: sudo snap install keepassxc --classic
 #  tags:
