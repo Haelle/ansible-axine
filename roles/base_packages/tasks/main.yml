@@ -18,6 +18,11 @@
     upgrade: dist
     update_cache: yes
 
+- name: Add Ansible Apt repository
+  apt_repository:
+    repo: ppa:ansible/ansible
+    state: present
+
 - name: Install & Configure Uncomplicated Firewall (ufw)
   include: ufw.yml
   tags: ufw
@@ -27,6 +32,8 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - software-properties-common
+    - ansible
     - htop
     - curl
     - cowsay
