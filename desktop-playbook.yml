@@ -15,3 +15,9 @@
     - { role: dropbox, tags: dropbox }
     - { role: hubiC, tags: hubiC }
     - { role: python, tags: python }
+
+# Gnome plugins:
+#  Alt Tab Workspace: https://extensions.gnome.org/extension/310/alt-tab-workspace/
+#  Dash to Dock: https://micheleg.github.io/dash-to-dock/
+#  Hubic Indicator: https://github.com/edouard-chevalier/hubic-indicator
+#  system-monitor: https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet
