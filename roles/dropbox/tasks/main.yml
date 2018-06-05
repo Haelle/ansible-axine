@@ -17,7 +17,6 @@
     state: present
   with_items:
     - dropbox
-    - python-gpgme
 
 # Does not work
 #- name: start dropbox daemon

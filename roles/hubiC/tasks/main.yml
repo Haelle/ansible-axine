@@ -31,10 +31,12 @@
     state: directory
 
 - name: copy hubiC_password file
-  become_user: '{{ user_1_name }}'
+  become: True
   template:
     src: './hubiC_password.j2'
-    dest: '~/Private/.hubiC_password'
+    dest: '/home/{{ user_1_name }}/Private/.hubiC_password'
+    owner: '{{ user_1_name }}'
+    group: '{{ user_1_name }}'
     mode: '0644'
 
 - name: login to hubiC
@@ -42,3 +44,4 @@
   command: hubic login --password_path=Private/.hubiC_password {{ user_1_email }} ~/hubiC
   args:
     chdir: ~/
+  ignore_errors: yes

@@ -42,8 +42,13 @@ bindkey "^R" history-incremental-search-backward
 # ignore duplicate history entries
 setopt histignoredups
 
-# keep TONS of history
+# keep TONS of history & share history through terminals
 export HISTSIZE=4096
+export HISTFILE=~/.zsh_history
+export SAVEHIST=5000
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
 
 # Try to correct command line spelling
 setopt CORRECT

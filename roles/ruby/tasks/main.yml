@@ -2,14 +2,16 @@
   include_role:
     name : zzet.rbenv
   vars:
-    default_ruby: 2.4.2
-    version: v1.1.1
-    env: system
     rbenv_owner: '{{ user_1_name }}'
     rbenv_group: '{{ user_1_name }}'
-    rubies:
-      - version: 2.4.2
-  tags: ['rbenv']
+    rbenv:
+      default_ruby: 2.5.1
+      version: v1.1.1
+      env: system
+      rubies:
+        - version: 2.5.1
+        - version: 2.4.2
+  tags: rbenv
 
 - name: Add brightbox repository to apt-get for ruby-2.4 dev
   apt_repository:
@@ -17,9 +19,9 @@
     state: present
     update_cache: yes
 
-- name: Install ruby-2.4 dev lib for gem compilation
+- name: Install ruby-2.5 dev lib for gem compilation
   apt:
-    name: ruby2.4-dev
+    name: ruby2.5-dev
     state: present
   register: rubydev
 
