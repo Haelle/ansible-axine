@@ -79,6 +79,8 @@ exec tail -n +3 $0
 insmod keylayouts
 keymap /boot/grub/fr.gkb
 ````
+### Remove memtest
+`sudo apt-get remove memtest86+`
 
 ### And update grub
 And finally :
