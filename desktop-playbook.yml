@@ -5,6 +5,17 @@
   vars_files:
     - './secrets/users_secrets.yml'
 
+  pre_tasks:
+    - name: Add Ansible Apt repository
+      apt_repository:
+        repo: ppa:ansible/ansible
+        state: present
+    - name: Upgrade Ansible
+      apt:
+        name: ansible
+        state: latest
+        update_cache: yes
+
   roles:
     - { role: base_packages, tags: base }
     - { role: development_user, users: "{{ desktop_user }}", tags: dev }
