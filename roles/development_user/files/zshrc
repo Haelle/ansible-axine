@@ -47,7 +47,7 @@ export HISTSIZE=4096
 export HISTFILE=~/.zsh_history
 export SAVEHIST=5000
 setopt appendhistory
-setopt sharehistory
+# setopt sharehistory
 setopt incappendhistory
 
 # Try to correct command line spelling

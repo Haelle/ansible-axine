@@ -33,8 +33,6 @@
     - browser-plugin-vlc
     - steam
     - openjdk-8-jre
-    - vlc
-    - rawtherapee
     - gimp
     - notify-osd
     - gnome-tweak-tool
@@ -42,6 +40,7 @@
     - exfat-utils
     - meld
     - variety
+    - xpad
 
 - name: Passwordless users
   lineinfile:
@@ -87,6 +86,11 @@
   tags:
     - keepass
     - keepassxc
+
+- name: VLC
+  command: sudo snap install vlc --classic
+  tags:
+    - vlc
 
 - name: /!\ TEST /!\ TLP (power managment) & suggests
   apt:

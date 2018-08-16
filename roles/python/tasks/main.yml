@@ -10,13 +10,14 @@
 - name: Update PIP
   shell: pip install --upgrade pip
 
-- name: install virtualenv packages
+- name: install some Python packages
   pip:
     name: "{{ item }}"
     state: latest
   with_items:
     - virtualenv
     - virtualenvwrapper
+    - jmespath
 
 - name: update Zshrc file with virtualenv conf
   blockinfile:
