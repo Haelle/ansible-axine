@@ -27,6 +27,9 @@ alias rsw='rails s -b www.alxs.fr -p 3000'
 alias test-reset="RAILS_ENV=test rails db:environment:set db:setup"
 alias sr="spring rspec"
 
+# Mutant
+alais mutant='bundle exec mutant --include lib --use rspec'
+
 # Rubocop
 alias rubocop='rubocop --format fuubar'
 

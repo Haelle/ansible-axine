@@ -4,24 +4,13 @@
   become: true
   vars:
     server_ip: "{{ bxine_ip }}"
-    cloud_folder: /home/{{ user_1_name }}/hubiC
   vars_files:
     - './secrets/users_secrets.yml'
-  environment:
-    DBUS_SESSION_BUS_ADDRESS: 'unix:abstract=/tmp/dbus-dlLfFBSth0,guid=1433a1d6adf840465c78abda5a291c93'
 
   roles:
     - { role: base_packages, tags: base }
-    - { role: nginx, tags: ngnix, mina_deploy: true }
     - { role: create_users, users: "{{ server_users }}" }
+    - { role: rvm, tags: rvm }
+    - { role: redis, tags: redis }
     - { role: development_user, users: "{{ server_users }}"}
-    - { role: python, tags: python }
-    - { role: dropbox, tags: dropbox }
-    - { role: hubiC, tags: hubiC }
-    - { role: alxs-certificates, tags: certif }
-    - { role: calibre-web, tags: calibre, calibre_name: alexandrie, calibre_port: 8085, google_tag_id: 'UA-105707307-1' }
-    - { role: calibre-web, tags: calibre, calibre_name: bazar, calibre_port: 8086, google_tag_id: 'UA-105707307-2' }
-    - { role: calibre-web, tags: calibre, calibre_name: comics, calibre_port: 8087, google_tag_id: 'UA-105707307-3' }
-    - { role: wordpress, tags: wordpress }
-    - { role: chloegaster.fr, tags: chloegaster }
-    - { role: munin-node, tags: munin,  munin_master_ip: "{{ axine_ip }}" }
+    - { role: nginx, tags: nginx, mina_deploy: true }

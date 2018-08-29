@@ -1,7 +1,6 @@
 ---
 - name: Rename server
   include: hostname.yml
-  tags: base
 
 - name: Ensure Apitude is installed
   apt:
