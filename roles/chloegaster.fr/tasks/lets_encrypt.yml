@@ -1,0 +1,22 @@
+---
+- name: Add certbot repository
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: Install packages for certifs
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+    - software-properties-common
+    - python-certbot-nginx
+    - letsencrypt
+
+- name: generate certif for domain
+  shell: certbot --nginx --agree-tos --noninteractive --redirect -d nouvelles.alxs.fr --email alexis@alxs.fr
+  become: true
+
+- name: auto-renew certif
+  shell: certbot renew --dry-run
+  become: true

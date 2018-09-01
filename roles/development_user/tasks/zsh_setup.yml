@@ -41,10 +41,3 @@
     mode: '0644'
   become_user: '{{ user.name }}'
   register: zsh_misc_copy
-
-- name: Reload zsh configuration
-  shell: source ~/.zshrc
-  args:
-    executable: /bin/bash
-  become_user: '{{ user.name }}'
-  when: zshrc_copy|changed or aliases_copy|changed or zsh_misc_copy|changed

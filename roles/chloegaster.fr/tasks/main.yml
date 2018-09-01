@@ -1,16 +1,32 @@
-- name: Copy Nginx conf
-  copy:
-    src: ./files/chloegaster.fr.conf
-    dest: /etc/nginx/sites-available/chloegaster.fr.conf
-    mode: 0644
+---
+- name: Install PHP
+  include: php.yml
+  tags:
+    - php
+- name: Install & configure MySQL
+  include: mysql.yml
+  tags:
+    - mysql
 
-- name: symlink to site enabled
-  file:
-    src: /etc/nginx/sites-available/chloegaster.fr.conf
-    path: /etc/nginx/sites-enabled/chloegaster.fr.conf
-    state: link
+- name: Download & install Wordpress
+  include: wordpress.yml
+  tags:
+    - wordpress
+
+- name: Nginx conf
+  include: nginx_conf.yml
+  tags:
+    - nginx
+
+- name: Install Let's Encrypt certificates
+  include: lets_encrypt.yml
+  tags:
+    - certbot
 
 - name: restart Nginx service
   service:
     name: nginx
     state: restarted
+  tags:
+    - nginx
+    - certbot

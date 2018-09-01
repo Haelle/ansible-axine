@@ -1,0 +1,12 @@
+---
+- hosts: bxine
+  remote_user: '{{ user_1_name }}'
+  become: true
+  vars:
+    server_ip: "{{ bxine_ip }}"
+  vars_files:
+    - './secrets/users_secrets.yml'
+    - './secrets/chloegaster.fr_secrets.yml'
+
+  roles:
+    - { role: chloegaster.fr, tags: blog }

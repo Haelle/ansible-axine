@@ -10,7 +10,5 @@
   roles:
     - { role: base_packages, tags: base }
     - { role: create_users, users: "{{ server_users }}" }
-    - { role: rvm, tags: rvm }
-    - { role: redis, tags: redis }
-    - { role: development_user, users: "{{ server_users }}"}
+    - { role: development_user, users: "{{ server_users }}" }
     - { role: nginx, tags: nginx, mina_deploy: true }
