@@ -44,6 +44,7 @@ Open it with `gnome-shell-extension-prefs`:
 - Dash to Dock
 - hubiC indicator
 - Alt Tab Workspace
+- Pomodoro
 
 ### Python virtual env
 Virtual envs are created in `~/.virtualenvs` and can be created with :

@@ -41,6 +41,7 @@
     - meld
     - variety
     - xpad
+    - gnome-shell-pomodoro
 
 - name: Passwordless users
   lineinfile:
