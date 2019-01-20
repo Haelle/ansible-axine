@@ -1,16 +1,4 @@
 ---
-- name: Add Google Chrome apt key
-  apt_key:
-    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
-    state: present
-  tags: chrome
-
-- name: Add Google Chrome repository
-  apt_repository:
-    repo: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
-    state: present
-  tags: chrome
-
 - name: remove buggy packages
   apt:
     name: "{{ item }}"
@@ -25,7 +13,6 @@
     update_cache: yes
   with_items:
     - xdotool
-    - google-chrome-stable
     - openssh-server
     - ecryptfs-utils
     - calibre
@@ -42,6 +29,7 @@
     - variety
     - xpad
     - gnome-shell-pomodoro
+    - xournal
 
 - name: Passwordless users
   lineinfile:
