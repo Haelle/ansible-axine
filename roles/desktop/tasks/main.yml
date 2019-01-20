@@ -38,21 +38,9 @@
     line: '%sudo ALL=(ALL:ALL) NOPASSWD: ALL'
     state: present
 
-- name: RubyMine
-  command: sudo snap install rubymine --classic
-  tags: rubymine
-
-- name: WebStorm
-  command: sudo snap install webstorm --classic
-  tags: webstorm
-
 - name: PyCharm
   command: sudo snap install pycharm-community --classic
   tags: pycharm
-
-- name: Visual Studio Code
-  command: sudo snap install vscode --classic
-  tags: vscode
 
 - name: Slack
   command: sudo snap install slack --classic
