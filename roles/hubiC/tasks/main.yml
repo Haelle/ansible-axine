@@ -21,13 +21,16 @@
 - name: just in case fix installation...
   command: 'apt-get install --fix-broken -y'
 
-  #- name: configure dbus-daemon
-  #command: export DBUS_SESSION_BUS_ADDRESS=`dbus-daemon --session --fork --print-address`
-
 - name: create hubiC directory
   become_user: '{{ user_1_name }}'
   file:
     path: ~/hubiC
+    state: directory
+
+# TODO make it different on desktop & server...
+- name: create Private directory if does not exists
+  file:
+    path: /home/{{ user_1_name }}/Private
     state: directory
 
 - name: copy hubiC_password file
@@ -38,6 +41,9 @@
     owner: '{{ user_1_name }}'
     group: '{{ user_1_name }}'
     mode: '0644'
+
+  #- name: configure dbus-daemon
+  #command: export DBUS_SESSION_BUS_ADDRESS=`dbus-daemon --session --fork --print-address`
 
 - name: login to hubiC
   become_user: '{{ user_1_name }}'
