@@ -26,34 +26,33 @@
 
 - name : Install base packages
   apt:
-    name: "{{ item }}"
+    pkg:
+      - software-properties-common
+      - ansible
+      - htop
+      - curl
+      - cowsay
+      - build-essential
+      - libffi-dev
+      - libssl-dev
+      - libreadline-dev
+      - zlib1g-dev
+      - libsqlite3-dev
+      - finger
+      - sqlite3
+      - ansible
+      - putty
+      - mosh
+      - tree
+      - libpq-dev
+      - postgresql
+      - colordiff
+      - pandoc
+      - lynx
+      - lftp
+      - whois
+      - python3-tk
+      - libpq5
+      - telnet
+      - jq
     state: latest
-  with_items:
-    - software-properties-common
-    - ansible
-    - htop
-    - curl
-    - cowsay
-    - build-essential
-    - libffi-dev
-    - libssl-dev
-    - libreadline-dev
-    - zlib1g-dev
-    - libsqlite3-dev
-    - finger
-    - sqlite3
-    - ansible
-    - putty
-    - mosh
-    - tree
-    - libpq-dev
-    - postgresql
-    - colordiff
-    - pandoc
-    - lynx
-    - lftp
-    - whois
-    - python3-tk
-    - libpq5
-    - telnet
-    - jq
