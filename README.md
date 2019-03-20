@@ -30,6 +30,11 @@ ansible-playbook desktop-playbook.yml
 ansible -m setup <hostname>
 ````
 
+### Dependencies
+```
+ansible-galaxy install -r requirements.yml
+```
+
 ## Post playbook install
 NodeJS installation is not handled by the role.
 

@@ -3,7 +3,7 @@
   remote_user: '{{ user_1_name }}' # Change it to 'pi' for first install
   become: true
   vars:
-    server_ip: 10.100.102.3
+    server_ip: "{{ ansible_default_ipv4.address }}"
   vars_files:
     - './secrets/users_secrets.yml'
 
@@ -12,6 +12,13 @@
     - { role: create_users, users: "{{ server_users }}", tags: users }
     - { role: development_user, users: "{{ server_users }}", tags: dev }
     - { role: nginx, mina_deploy: true, tags: nginx }
+    - role: elboletaire.transmission
+      transmission_user: "{{ user_1_name }}"
+      transmission_download_dir: "/home/{{ user_1_name }}/downloads"
+      transmission_incomplete_dir: "/home/{{ user_1_name }}/.incomplete"
+      transmission_watch_dir: "/home/{{ user_1_name }}/torrents"
+      transmission_rpc_whitelist_enabled: false
+      tags: transmission
     - { role: cloud-server, tags: cloud }
 
 # To enable/disable console mode:
