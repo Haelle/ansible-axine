@@ -1,0 +1,18 @@
+---
+- hosts: axine-cloud
+  remote_user: '{{ user_1_name }}' # Change it to 'pi' for first install
+  become: true
+  vars:
+    server_ip: 10.100.102.3
+  vars_files:
+    - './secrets/users_secrets.yml'
+
+  roles:
+    - { role: base_packages, tags: base }
+    - { role: create_users, users: "{{ server_users }}", tags: users }
+    - { role: development_user, users: "{{ server_users }}", tags: dev }
+    - { role: nginx, mina_deploy: true, tags: nginx }
+    - { role: cloud-server, tags: cloud }
+
+# To enable/disable console mode:
+#  sudo raspi-config

@@ -1,0 +1,9 @@
+---
+hostname: axine-cloud
+server_users:
+  - name: '{{ user_1_name }}'
+    fullname: '{{ user_1_fullname }}'
+    email: '{{ user_1_email }}'
+    ssh_key: https://github.com/haelle.keys
+
+root_key: https://github.com/haelle.keys

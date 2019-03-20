@@ -14,3 +14,6 @@ bxine-vps
 
 [local]
 localhost
+
+[axine-cloud]
+10.100.102.3

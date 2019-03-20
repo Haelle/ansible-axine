@@ -30,6 +30,7 @@
     - xpad
     - gnome-shell-pomodoro
     - xournal
+    - chromium
 
 - name: Passwordless users
   lineinfile:

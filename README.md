@@ -26,6 +26,8 @@ This Ansible configures:
 ansible-playbook axine-vps-playbook.yml
 ansible-playbook bxine-vps-playbook.yml
 ansible-playbook desktop-playbook.yml
+# get vars from this hostname
+ansible -m setup <hostname>
 ````
 
 ## Post playbook install

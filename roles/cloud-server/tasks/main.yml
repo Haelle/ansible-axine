@@ -1,0 +1,5 @@
+---
+- name: Auto start SSH
+  service:
+    name: ssh
+    enabled: yes

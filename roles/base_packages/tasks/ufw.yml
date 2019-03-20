@@ -13,6 +13,7 @@
 - name: Temporary disable
   ufw:
     state: disabled
+  notify: Restart UFW
 
 - name: Enable logging
   ufw:
@@ -41,3 +42,4 @@
 - name: Enable UFW
   ufw:
     state: enabled
+  when: ansible_lsb.id != "Raspbian"
