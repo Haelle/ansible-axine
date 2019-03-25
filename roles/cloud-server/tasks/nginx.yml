@@ -1,0 +1,28 @@
+---
+- name: Copy Nginx conf Transmission
+  copy:
+    src: transmission.alxs.fr.conf
+    dest: /etc/nginx/sites-available/transmission.alxs.fr.conf
+    mode: 0644
+  notify: reload nginx
+
+- name: symlink to site enabled Transmission
+  file:
+    src: /etc/nginx/sites-available/transmission.alxs.fr.conf
+    path: /etc/nginx/sites-enabled/transmission.alxs.fr.conf
+    state: link
+  notify: reload nginx
+
+- name: Copy Nginx conf Plex
+  copy:
+    src: plex.alxs.fr.conf
+    dest: /etc/nginx/sites-available/plex.alxs.fr.conf
+    mode: 0644
+  notify: reload nginx
+
+- name: symlink to site enabled Plex
+  file:
+    src: /etc/nginx/sites-available/plex.alxs.fr.conf
+    path: /etc/nginx/sites-enabled/plex.alxs.fr.conf
+    state: link
+  notify: reload nginx

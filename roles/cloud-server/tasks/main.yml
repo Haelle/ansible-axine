@@ -8,11 +8,20 @@
   command: raspi-config nonint do_boot_behaviour B1
   become: true
 
+- name: Nginx confs
+  include: nginx.yml
+  tags: cloud-nginx
+
+- name: Install packages
+  apt:
+    name:
+      - ntfs-3g
+
 - name: TEMP auto mount data disk
   mount:
     path: "{{ mount_point }}"
     src: UUID={{ disk_uuid }}
-    fstype: ntfs
-    opts: defaults,user,umask=000
+    fstype: ntfs-3g
+    opts: defaults,umask=002,uid=1001,gid=1001
     state: present
 

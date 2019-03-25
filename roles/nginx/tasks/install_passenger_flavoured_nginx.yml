@@ -7,13 +7,12 @@
 
 - name: Install https support for apt
   apt:
-    name: "{{ item }}"
+    name:
+      - dirmngr
+      - gnupg
+      - apt-transport-https
+      - ca-certificates
     state: present
-  with_items:
-    - dirmngr
-    - gnupg
-    - apt-transport-https
-    - ca-certificates
 
 - name: Add phusion passenger apt repository
   apt_repository:
@@ -23,12 +22,11 @@
 
 - name: Install nginx (passenger flavored) / passenger
   apt:
-    name: "{{ item }}"
+    name:
+      - nginx-extras
+      - passenger
     state: present
     update_cache: yes
-  with_items:
-    - nginx-extras
-    - passenger
   when: add_phusion_repo_to_apt.changed
 
 - name: Enable autorestart nginx
