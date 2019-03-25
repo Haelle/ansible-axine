@@ -3,3 +3,16 @@
   service:
     name: ssh
     enabled: yes
+
+- name: Disable GUI at boot time
+  command: raspi-config nonint do_boot_behaviour B1
+  become: true
+
+- name: TEMP auto mount data disk
+  mount:
+    path: "{{ mount_point }}"
+    src: UUID={{ disk_uuid }}
+    fstype: ntfs
+    opts: defaults,user,umask=000
+    state: present
+

@@ -4,6 +4,8 @@
   become: true
   vars:
     server_ip: "{{ ansible_default_ipv4.address }}"
+    mount_point: "/mnt/data"
+    disk_uuid: 727A8D4E18B6D217
   vars_files:
     - './secrets/users_secrets.yml'
 
@@ -14,12 +16,21 @@
     - { role: nginx, mina_deploy: true, tags: nginx }
     - role: elboletaire.transmission
       transmission_user: "{{ user_1_name }}"
-      transmission_download_dir: "/home/{{ user_1_name }}/downloads"
-      transmission_incomplete_dir: "/home/{{ user_1_name }}/.incomplete"
-      transmission_watch_dir: "/home/{{ user_1_name }}/torrents"
+      transmission_download_dir: "{{ mount_point }}/downloads"
+      transmission_incomplete_dir: "{{ mount_point }}/.incomplete"
+      transmission_watch_dir: "{{ mount_point }}/torrents"
       transmission_rpc_whitelist_enabled: false
       tags: transmission
+    - { role: plex, tags: plex }
     - { role: cloud-server, tags: cloud }
 
-# To enable/disable console mode:
-#  sudo raspi-config
+# TODO:
+# transmission:
+# add URL with transmission.alxs.fr for localhost:9091/transmission/web/
+# faire un seul dossier de film et les re-ajouter dans transmission
+# Plex:
+# truc pi user a la place de plex pourquoi ?
+# plugin plex:
+# utile ? ça a l'air de marcher... redémarrer ?
+# HDD:
+# sudo mount -t ntfs -o umask=0022,gid=1001,uid=1001 /dev/sda1 /mnt
