@@ -1,0 +1,27 @@
+---
+- name: create destination directory
+  file:
+    path: /mnt/data/plex_data
+    state: directory
+    owner: "{{ user_1_name }}"
+    group: "{{ user_1_name }}"
+
+- name: backup Plex config
+  shell: mv /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server.backup
+  become: true
+
+- name: copy current config to data partition
+  shell: cp -r /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server.backup /mnt/data/plex_data
+  become: true
+
+# copy does not support recursive mode
+#  copy:
+#    src: "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/"
+#    dest: /mnt/data/plex_data/
+#    remote_src: yes
+
+- name: create symlink
+  file:
+    src: "/mnt/data/plex_data/Plex\ Media\ Server"
+    path: "/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server"
+    state: link
