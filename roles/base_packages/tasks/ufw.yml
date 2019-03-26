@@ -13,7 +13,6 @@
 - name: Temporary disable
   ufw:
     state: disabled
-  notify: Restart UFW
 
 - name: Enable logging
   ufw:

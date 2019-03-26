@@ -2,5 +2,6 @@
 - name: Install Plex Media Server
   include_tasks: install.yml
 
-- name: Install csfd-plex (metadata agent)
-  include_tasks: csfd.yml
+# Plugins are disabled in Plex for the moment
+#- name: Install csfd-plex (metadata agent)
+#  include_tasks: csfd.yml

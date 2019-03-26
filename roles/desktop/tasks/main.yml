@@ -31,6 +31,7 @@
     - gnome-shell-pomodoro
     - xournal
     - chromium
+    - nfs-common
 
 - name: Passwordless users
   lineinfile:

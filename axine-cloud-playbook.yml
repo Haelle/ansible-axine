@@ -6,6 +6,7 @@
     server_ip: "{{ ansible_default_ipv4.address }}"
     mount_point: "/mnt/data"
     disk_uuid: 727A8D4E18B6D217
+    nfs_allowed_ips: 10.100.102.0/24
   vars_files:
     - './secrets/users_secrets.yml'
     - './secrets/cloud_secrets.yml'
@@ -28,6 +29,17 @@
     - { role: cloud-server, tags: cloud }
 
 # TODO:
-# Plex:
-# plugin plex:
-# utile ? ça a l'air de marcher... redémarrer ?
+# change /mnt/data => /media/data
+# NFS disk
+# RAID 1 change NFS conf
+# Plex :
+# le symlink m'a bien fait chier
+# faut rajouter
+# sudo chown -h -R plex:plex Plex\ Media\ Server
+# sudo chown -h -R plex:plex path_to_real_dir
+# oublier le ntfs pour le serveur... faut du ext4 !!!
+
+# ----------------
+# To do by hand
+# enable UFW ansible fails to enable on strech ?!
+# $ sudo ufw enable
