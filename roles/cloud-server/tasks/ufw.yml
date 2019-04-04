@@ -16,3 +16,9 @@
     rule: allow
     port: 32400
   tags: plex
+
+- name: Allow Transmission in UFW
+  ufw:
+    rule: allow
+    port: 51413
+  tags: transmission
