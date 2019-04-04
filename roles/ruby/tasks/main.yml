@@ -1,3 +1,19 @@
+- name: Directory for Rbenv
+  file:
+    state: directory
+    owner: '{{ user_1_name }}'
+    group: '{{ user_1_name }}'
+    path: '/usr/local/rbenv'
+  become: yes
+
+- name: make sure /usr/local/ folder is owned by {{ user_1_name }} for installing rbenv
+  file:
+    path: /usr/local
+    owner: '{{ user_1_name }}'
+    group: '{{ user_1_name }}'
+    state: directory
+    mode: 0755
+
 - name: Install Rbenv
   include_role:
     name : zzet.rbenv

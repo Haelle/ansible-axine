@@ -13,6 +13,7 @@
   roles:
     - { role: base_packages,     tags: base }
     - { role: nginx,             tags: ngnix, mina_deploy: true }
+    - { role: ruby,              tags: ruby }
     - { role: create_users,      users: "{{ server_users }}" }
     - { role: development_user,  users: "{{ server_users }}" }
     - { role: python,            tags: python }
