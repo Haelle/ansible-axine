@@ -6,3 +6,9 @@
 - name: Nginx conf
   include: nginx_conf.yml
   tags: nginx_conf
+
+# It seems not to work on some installs...
+# https://stackoverflow.com/questions/21840707/nginx-unknown-directive-for-passenger-root
+# could help, especially the second answer :
+# add : include /etc/nginx/modules-enabled/*.conf;
+# before event section in /etc/nginx/nginx.conf
