@@ -2,3 +2,5 @@
   version: '3.3.1'
 - src: elboletaire.transmission
   version: '2.0.1'
+- src: aalaesar.install_nextcloud
+  version: v1.3.4

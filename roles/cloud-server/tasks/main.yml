@@ -12,7 +12,7 @@
   include: nginx.yml
   tags: cloud-nginx
 
-- name: Plex register link state
+- name: Plex register directory state (is link ?)
   stat:
     path: "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/"
   register: plex_link

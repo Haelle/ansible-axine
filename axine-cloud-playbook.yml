@@ -26,6 +26,14 @@
       transmission_rpc_whitelist_enabled: false
       tags: transmission
     - { role: plex, tags: plex }
+    - role: aalaesar.install_nextcloud
+      #nextcloud_trusted_domain: cloud.alxs.fr
+      nextcloud_websrv: nginx
+      nextcloud_data_dir: "{{ mount_point }}/nextcloud"
+      nextcloud_admin_pwd: "{{ nextcloud_admin_password }}"
+      nextcloud_db_backend: pgsql
+      nextcloud_db_pwd: "{{ nextcloud_db_password }}"
+      tags: nextcloud
     - { role: cloud-server, tags: cloud }
 
 # TODO:

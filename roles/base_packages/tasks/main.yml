@@ -56,4 +56,6 @@
       - libpq5
       - telnet
       - jq
+      - powerline
+      - fonts-powerline
     state: latest
