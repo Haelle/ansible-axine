@@ -1,7 +1,9 @@
 ---
 - name: Install git
   apt:
-    name: git
+    name:
+      - git
+      - git-flow
     state: latest
 
 - name: Copy gitignore file for {{ user.name }}
