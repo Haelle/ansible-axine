@@ -25,3 +25,5 @@
     - { role: calibre-web,       tags: calibre, calibre_name: comics, calibre_port: 8087, google_tag_id: 'UA-105707307-3' }
     - { role: chloegaster.fr,    tags: chloegaster }
 
+    - role: nextcloud_client
+      tags: nextcloud

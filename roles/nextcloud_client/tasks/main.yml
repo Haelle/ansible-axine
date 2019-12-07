@@ -1,0 +1,21 @@
+---
+- name: Add Nextcloud-client repository
+  apt_repository:
+    repo: ppa:nextcloud-devs/client
+
+- name: Install Nextcloud-client
+  package:
+    name: nextcloud-client
+    state: present
+
+- name: Copy excluded directories
+  copy:
+    src: excluded_directories
+    dest: '{{ nextcloud_excluded_directories_path }}'
+
+- name: Sync every days
+  cron:
+    name: Sync Nextcloud
+    special_time: daily
+    user: '{{ nextcloud_user }}'
+    job: '{{ nextcloud_sync_cmd }}'
