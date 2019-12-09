@@ -3,6 +3,7 @@
   include: php.yml
   tags:
     - php
+
 - name: Install & configure MySQL
   include: mysql.yml
   tags:
@@ -18,15 +19,9 @@
   tags:
     - nginx
 
-- name: Install Let's Encrypt certificates
-  include: lets_encrypt.yml
-  tags:
-    - certbot
-
 - name: restart Nginx service
   service:
     name: nginx
     state: restarted
   tags:
     - nginx
-    - certbot
