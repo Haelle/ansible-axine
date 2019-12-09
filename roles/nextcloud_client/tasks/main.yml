@@ -12,6 +12,7 @@
   copy:
     src: excluded_directories
     dest: '{{ nextcloud_excluded_directories_path }}'
+  become_user: '{{ user_1_name }}'
 
 - name: Sync every days
   cron:
@@ -19,3 +20,4 @@
     special_time: daily
     user: '{{ nextcloud_user }}'
     job: '{{ nextcloud_sync_cmd }}'
+  become_user: '{{ user_1_name }}'
