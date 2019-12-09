@@ -27,3 +27,11 @@
 
     - role: nextcloud_client
       tags: nextcloud
+
+    - role: haelle.certbot_ansible
+      certbot_admin_email: '{{ user_1_email }}'
+      domains_to_cert:
+        - alexandrie.alxs.fr
+        - bazar.alxs.fr
+        - comics.alxs.fr
+      tags: certbot
