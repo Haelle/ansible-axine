@@ -1,0 +1,35 @@
+---
+- hosts: axine
+  become: true
+  vars:
+    nextcloud_dir: /home/alexis/Nextcloud/
+  vars_files:
+    - './secrets/users_secrets.yml'
+
+  roles:
+    - role: haelle.calibre_web_ansible
+      calibre_web:
+        name: alexandrie
+        port: 8086
+        domain: alxs.fr
+        db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/alexandrie-app.db'
+        certbot_email: alexis@alxs.fr
+      tags: calibre
+
+    - role: haelle.calibre_web_ansible
+      calibre_web:
+        name: bazar
+        port: 8087
+        domain: alxs.fr
+        db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/bazar-app.db'
+        certbot_email: alexis@alxs.fr
+      tags: calibre
+
+    - role: haelle.calibre_web_ansible
+      calibre_web:
+        name: comics
+        port: 8088
+        domain: alxs.fr
+        db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/comics-app.db'
+        certbot_email: alexis@alxs.fr
+      tags: calibre

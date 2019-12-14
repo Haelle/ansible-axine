@@ -19,19 +19,7 @@
     - { role: python,            tags: python }
     - { role: dropbox,           tags: dropbox }
     - { role: hubiC,             tags: hubiC }
-    - { role: calibre-web,       tags: calibre, calibre_name: alexandrie, calibre_port: 8085, google_tag_id: 'UA-105707307-1' }
-    - { role: calibre-web,       tags: calibre, calibre_name: bazar, calibre_port: 8086, google_tag_id: 'UA-105707307-2' }
-    - { role: calibre-web,       tags: calibre, calibre_name: comics, calibre_port: 8087, google_tag_id: 'UA-105707307-3' }
     - { role: chloegaster.fr,    tags: chloegaster }
 
     - role: nextcloud_client
       tags: nextcloud
-
-    - role: haelle.certbot_ansible
-      certbot_admin_email: '{{ user_1_email }}'
-      domains_to_cert:
-        - alexandrie.alxs.fr
-        - bazar.alxs.fr
-        - comics.alxs.fr
-        - chloegaster.fr
-      tags: certbot

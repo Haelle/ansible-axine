@@ -2,4 +2,6 @@
 - src: zzet.rbenv
   version: '3.3.1'
 - src: haelle.certbot_ansible
-  version: 'v1.1'
+  version: 'v1.2'
+- src: haelle.calibre_web_ansible
+  version: 'v1.0'
