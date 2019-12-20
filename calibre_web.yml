@@ -14,7 +14,7 @@
         domain: alxs.fr
         db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/alexandrie-app.db'
         certbot_email: alexis@alxs.fr
-      tags: calibre
+      tags: alexandrie
 
     - role: haelle.calibre_web_ansible
       calibre_web:
@@ -23,7 +23,7 @@
         domain: alxs.fr
         db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/bazar-app.db'
         certbot_email: alexis@alxs.fr
-      tags: calibre
+      tags: bazar
 
     - role: haelle.calibre_web_ansible
       calibre_web:
@@ -32,4 +32,4 @@
         domain: alxs.fr
         db_symlink_path: '{{ nextcloud_dir }}Livres_numériques/calibre-web-configs/comics-app.db'
         certbot_email: alexis@alxs.fr
-      tags: calibre
+      tags: comics
