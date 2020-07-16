@@ -19,6 +19,7 @@
   roles:
     - { role: base_packages, tags: base }
     - { role: development_user, users: "{{ desktop_user }}", tags: dev }
+    - { role: geerlingguy.docker, docker_users: ['alexis'], tags: docker }
     - { role: nginx, mina_deploy: true, tags: nginx }
     - { role: ruby, tags: ruby }
     - { role: nodejs, tags: nodejs }
@@ -31,6 +32,7 @@
 # Gnome plugins:
 #  Alt Tab Workspace: https://extensions.gnome.org/extension/310/alt-tab-workspace/
 #  Dash to Dock: https://micheleg.github.io/dash-to-dock/
-#  Hubic Indicator: https://github.com/edouard-chevalier/hubic-indicator
 #  system-monitor: https://github.com/paradoxxxzero/gnome-shell-system-monitor-applet
 #  Pomodoro : https://github.com/codito/gnome-pomodoro/
+#  Docker : https://extensions.gnome.org/extension/1065/docker-status/
+#  Docker : https://extensions.gnome.org/extension/2224/easy-docker-containers/ (Gnome trop récent demandé)

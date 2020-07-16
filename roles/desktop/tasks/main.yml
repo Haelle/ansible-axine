@@ -30,6 +30,7 @@
     - xpad
     - gnome-shell-pomodoro
     - xournal
+    - chrome-gnome-shell
 
 - name: Passwordless users
   lineinfile:
@@ -39,24 +40,40 @@
     state: present
 
 - name: PyCharm
-  command: sudo snap install pycharm-community --classic
+  snap:
+    name: pycharm-community
+    classic: 'yes'
   tags: pycharm
 
 - name: Slack
-  command: sudo snap install slack --classic
+  snap:
+    name: slack
+    classic: 'yes'
   tags: slack
 
 - name: Skype
-  command: sudo snap install skype --classic
+  snap:
+    name: skype
+    classic: 'yes'
   tags: skype
 
 - name: Insomnia
-  command: sudo snap install insomnia --classic
+  snap:
+    name: insomnia
+    classic: 'yes'
   tags: insomnia
 
 - name: GitKraken
-  command: sudo snap install gitkraken --classic
+  snap:
+    name: gitkraken
+    classic: 'yes'
   tags: gitkraken
+
+- name: VS Code
+  snap:
+    name: code
+    classic: 'yes'
+  tags: vscode
 
 - name: KeepassXC
   command: sudo snap install keepassxc --classic
