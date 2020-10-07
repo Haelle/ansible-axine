@@ -16,7 +16,6 @@
     - { role: create_users,      users: "{{ server_users }}" }
     - { role: development_user,  users: "{{ server_users }}" }
     - { role: python,            tags: python }
-    - { role: dropbox,           tags: dropbox }
     - { role: chloegaster.fr,    tags: chloegaster }
 
     - role: nextcloud_client

@@ -25,7 +25,6 @@
     - { role: nodejs, tags: nodejs }
     - { role: redis, tags: redis }
     - { role: desktop, tags: desktop }
-    - { role: dropbox, tags: dropbox }
     - { role: python, tags: python }
 
 # Gnome plugins:
