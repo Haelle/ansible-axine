@@ -4,7 +4,6 @@
   become: true
   vars:
     server_ip: "{{ axine_ip }}"
-    cloud_folder: /home/{{ user_1_name }}/hubiC
   vars_files:
     - './secrets/users_secrets.yml'
   environment:
@@ -18,7 +17,6 @@
     - { role: development_user,  users: "{{ server_users }}" }
     - { role: python,            tags: python }
     - { role: dropbox,           tags: dropbox }
-    - { role: hubiC,             tags: hubiC }
     - { role: chloegaster.fr,    tags: chloegaster }
 
     - role: nextcloud_client

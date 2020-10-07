@@ -42,7 +42,6 @@ Open it with `gnome-shell-extension-prefs`:
 
 - System monitor
 - Dash to Dock
-- hubiC indicator
 - Alt Tab Workspace
 - Pomodoro
 
