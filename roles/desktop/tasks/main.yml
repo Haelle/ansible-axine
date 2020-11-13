@@ -6,12 +6,22 @@
   with_items:
     - indicator-application # top bar indicator (old Unity) in conflict with the new system (Gnome)
 
+- name: Add KeepassXC official repository
+  apt_repository:
+    repo: ppa:phoerious/keepassxc
+    state: present
+    update_cache: 'yes'
+  tags:
+    - keepass
+    - keepass-xc
+
 - name: install desktop packages
   apt:
     name: "{{ item }}"
     state: latest
     update_cache: yes
   with_items:
+    - keepassxc
     - xdotool
     - openssh-server
     - ecryptfs-utils
@@ -74,12 +84,6 @@
     name: code
     classic: 'yes'
   tags: vscode
-
-- name: KeepassXC
-  command: sudo snap install keepassxc --classic
-  tags:
-    - keepass
-    - keepassxc
 
 - name: VLC
   command: sudo snap install vlc --classic
