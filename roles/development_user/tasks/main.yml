@@ -13,13 +13,3 @@
   include: tmux_setup.yml user={{ item }}
   with_items: "{{ users }}"
   tags: tmux
-
-- name: Install Vim & Plugins for users list
-  include: vim_setup.yml user={{ item }}
-  with_items: "{{ users }}"
-  tags: vim
-
-- name: Install & configure zsh for users list
-  include: zsh_setup.yml user={{ item }}
-  with_items: "{{ users }}"
-  tags: zsh

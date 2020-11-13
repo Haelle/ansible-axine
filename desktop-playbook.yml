@@ -19,6 +19,8 @@
   roles:
     - { role: base_packages, tags: base }
     - { role: development_user, users: "{{ desktop_user }}", tags: dev }
+    - { role: haelle.vimrc, tags: vim }
+    - { role: haelle.oh_my_zsh, users: ['alexis'], tags: zsh }
     - { role: geerlingguy.docker, docker_users: ['alexis'], tags: docker }
     - { role: nginx, mina_deploy: true, tags: nginx }
     - { role: ruby, tags: ruby }
