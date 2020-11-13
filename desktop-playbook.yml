@@ -14,7 +14,7 @@
       apt:
         name: ansible
         state: latest
-        update_cache: yes
+        update_cache: 'yes'
 
   roles:
     - { role: base_packages, tags: base }
