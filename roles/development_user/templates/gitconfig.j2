@@ -1,8 +1,6 @@
 [user]
   name = {{ user.fullname }}
   email = {{ user.email }}
-[push]
-  default = upstream
 [color]
   ui = true
 [alias]
@@ -12,11 +10,11 @@
   st = status
   d  = diff -w
   br = branch
-  ca = commit --amend
-  ci = commit -v
-  fix = commit --amend --no-edit
-  boyscout = commit -m "Boyscout"
-  bs = commit -m "Boyscout"
+  ca = commit --amend --gpg-sign
+  ci = commit --verbose --gpg-sign
+  fix = commit --amend --no-edit --gpg-sign
+  boyscout = commit -m "Boyscout" --gpg-sign
+  bs = commit -m "Boyscout" --gpg-sign
   co = checkout
   pf = push --force-with-lease
   lg = log --pretty=format:'%C(bold)–%Creset %C(red bold)%h%d%Creset | %C(green)%an%Creset | %C(magenta)%cr%Creset | %C(cyan)%s%Creset'
@@ -41,5 +39,3 @@
   autocrlf = input
   editor = vim
   whitespace = -trailing-space,-indent-with-non-tab,-tab-in-indent
-[github]
-  user = haelle
