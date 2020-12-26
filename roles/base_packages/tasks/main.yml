@@ -24,7 +24,7 @@
   include: ufw.yml
   tags: ufw
 
-- name : Install base packages
+- name: Install base packages
   apt:
     pkg:
       - software-properties-common
@@ -55,4 +55,5 @@
       - libpq5
       - telnet
       - jq
+      - magic-wormhole
     state: latest

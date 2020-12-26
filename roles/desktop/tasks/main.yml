@@ -10,7 +10,7 @@
   apt_repository:
     repo: ppa:phoerious/keepassxc
     state: present
-    update_cache: 'yes'
+    update_cache: "yes"
   tags:
     - keepass
     - keepass-xc
@@ -46,43 +46,43 @@
   lineinfile:
     path: /etc/sudoers
     regexp: '\%sudo.+ALL=\(ALL:ALL\).+ALL'
-    line: '%sudo ALL=(ALL:ALL) NOPASSWD: ALL'
+    line: "%sudo ALL=(ALL:ALL) NOPASSWD: ALL"
     state: present
 
 - name: PyCharm
   snap:
     name: pycharm-community
-    classic: 'yes'
+    classic: "yes"
   tags: pycharm
 
 - name: Slack
   snap:
     name: slack
-    classic: 'yes'
+    classic: "yes"
   tags: slack
 
 - name: Skype
   snap:
     name: skype
-    classic: 'yes'
+    classic: "yes"
   tags: skype
 
 - name: Insomnia
   snap:
     name: insomnia
-    classic: 'yes'
+    classic: "yes"
   tags: insomnia
 
 - name: GitKraken
   snap:
     name: gitkraken
-    classic: 'yes'
+    classic: "yes"
   tags: gitkraken
 
 - name: VS Code
   snap:
     name: code
-    classic: 'yes'
+    classic: "yes"
   tags: vscode
 
 - name: VLC
