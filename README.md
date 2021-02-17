@@ -1,6 +1,7 @@
 # Ansible Axine
 
 #### TODO
+
 add Oh My Zsh support:
 https://github.com/robbyrussell/oh-my-zsh
 
@@ -15,20 +16,29 @@ add Rbenv support
 install some gems => seeing_is_believing
 
 ## Introduction
+
 This Ansible configures:
 
 - personnal desktop
 - master server (for dev)
 - slave website server
 
+## Dependencies
+
+It needs Ansible community tasks:
+
+`ansible-galaxy collection install community.general`
+
 ## Basic command lines
-````
+
+```
 ansible-playbook axine-vps-playbook.yml
 ansible-playbook bxine-vps-playbook.yml
 ansible-playbook desktop-playbook.yml
-````
+```
 
 ## Post playbook install
+
 NodeJS installation is not handled by the role.
 
 Run : `nvm install 9.3`
@@ -38,6 +48,7 @@ Install **Private** encrypted directory:
 `ecryptfs-setup-private`
 
 ### Gnome Shell Extension
+
 Open it with `gnome-shell-extension-prefs`:
 
 - System monitor
@@ -46,6 +57,7 @@ Open it with `gnome-shell-extension-prefs`:
 - Pomodoro
 
 ### Python virtual env
+
 Virtual envs are created in `~/.virtualenvs` and can be created with :
 
 `mkvirtualenv -p python3 <virtualenv_name>`
@@ -59,6 +71,7 @@ To stop using it:
 `deactivate`
 
 ## Grub: Informations complémentaires
+
 Grub is a bit touchy it's not done by Ansible yet...
 
 ### Change keyboard
@@ -79,15 +92,19 @@ exec tail -n +3 $0
 insmod keylayouts
 keymap /boot/grub/fr.gkb
 ````
+
 ### Remove memtest
+
 `sudo apt-get remove memtest86+`
 
 ### And update grub
+
 And finally :
 
 `sudo update-grub`
 
 ### Requirements
+
 Python on target server
 Allow ssh connection for root user:
 `sudo vim /etc/ssh/sshd_config`

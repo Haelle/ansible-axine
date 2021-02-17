@@ -21,31 +21,31 @@
     rbenv_owner: '{{ user_1_name }}'
     rbenv_group: '{{ user_1_name }}'
     rbenv:
-      default_ruby: 2.5.1
+      default_ruby: 2.7.1
       version: v1.1.1
       env: system
       rubies:
-        - version: 2.5.1
-        - version: 2.4.2
+        - version: 2.7.1
+        #- version: 2.4.2
   tags: rbenv
 
-- name: Add brightbox repository to apt-get for ruby-2.4 dev
-  apt_repository:
-    repo: 'ppa:brightbox/ruby-ng'
-    state: present
-    update_cache: yes
+#- name: Add brightbox repository to apt-get for ruby-2.4 dev
+  #apt_repository:
+    #repo: 'ppa:brightbox/ruby-ng'
+    #state: present
+    #update_cache: yes
 
-- name: Install ruby-2.5 dev lib for gem compilation
-  apt:
-    name: ruby2.5-dev
-    state: present
-  register: rubydev
+#- name: Install ruby-2.7 dev lib for gem compilation
+  #apt:
+    #name: ruby2.7-dev
+    #state: present
+  #register: rubydev
 
-- name: Checks if apt installed ruby exists
-  shell: zsh -c '[[ `readlink -f /usr/bin/ruby` =~ "^\/usr\/bin\/ruby2\.[[:digit:]]" ]]'
-  register: apt_installed_ruby
-  ignore_errors: true
+#- name: Checks if apt installed ruby exists
+  #shell: zsh -c '[[ `readlink -f /usr/bin/ruby` =~ "^\/usr\/bin\/ruby2\.[[:digit:]]" ]]'
+  #register: apt_installed_ruby
+  #ignore_errors: true
 
-- name: Nuke apt installed ruby if existing and replaces it by a symbolic link to rbenv install
-  shell: zsh -c 'rm /usr/bin/ruby && sudo ln -s /usr/local/rbenv/shims/ruby /usr/bin/ruby'
-  when: apt_installed_ruby.rc == 0
+#- name: Nuke apt installed ruby if existing and replaces it by a symbolic link to rbenv install
+  #shell: zsh -c 'rm /usr/bin/ruby && sudo ln -s /usr/local/rbenv/shims/ruby /usr/bin/ruby'
+  #when: apt_installed_ruby.rc == 0

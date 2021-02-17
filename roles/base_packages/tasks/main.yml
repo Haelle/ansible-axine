@@ -57,3 +57,8 @@
       - jq
       - magic-wormhole
     state: latest
+
+- name: Install lolcat
+  community.general.gem:
+    name: lolcat
+    state: present

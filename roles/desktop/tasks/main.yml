@@ -15,6 +15,14 @@
     - keepass
     - keepass-xc
 
+- name: Add Nemo Seahorse repository
+  apt_repository:
+    repo: ppa:wasta-linux/cinnamon-testing
+    state: present
+    update_cache: "yes"
+
+# browser-plugin-vlc seems to be not available anymore
+# what was its purpose ?
 - name: install desktop packages
   apt:
     name: "{{ item }}"
@@ -27,7 +35,6 @@
     - ecryptfs-utils
     - calibre
     - vlc
-    - browser-plugin-vlc
     - steam
     - openjdk-8-jre
     - gimp
@@ -41,6 +48,12 @@
     - gnome-shell-pomodoro
     - xournal
     - chrome-gnome-shell
+    - ghostwriter
+    - nautilus-nextcloud
+    - seahorse-nautilus
+    - nemo
+    - nemo-nextcloud
+    - nemo-seahorse
 
 - name: Passwordless users
   lineinfile:
@@ -70,6 +83,12 @@
 - name: Insomnia
   snap:
     name: insomnia
+    classic: "yes"
+  tags: insomnia
+
+- name: Insomnia Designer
+  snap:
+    name: insomnia-designer
     classic: "yes"
   tags: insomnia
 
