@@ -14,6 +14,15 @@
     dest: '{{ nextcloud_excluded_directories_path }}'
   become_user: '{{ user_1_name }}'
 
+- name: Create Nextcloud directory
+  become_user: '{{ user_1_name }}'
+  file:
+    path: '{{ nextcloud_folder }}'
+    state: directory
+    mode: '0755'
+    owner: '{{ user_1_name }}'
+    group: '{{ user_1_name }}'
+
 - name: Create log directory
   file:
     path: '{{ nextcloud_log_folder }}'

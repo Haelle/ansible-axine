@@ -11,11 +11,6 @@
   apt:
     update_cache: yes
 
-#- name: Apitude Update/Upgrade
-#  apt:
-#    name: "*"
-#    state: latest
-
 - name: Apitude Update/Dist-Upgrade
   apt:
     upgrade: dist
@@ -27,35 +22,35 @@
 - name: Install base packages
   apt:
     pkg:
-      - software-properties-common
       - ansible
-      - htop
-      - curl
-      - cowsay
       - build-essential
-      - libffi-dev
-      - libssl-dev
-      - libreadline-dev
-      - zlib1g-dev
-      - libsqlite3-dev
-      - finger
-      - sqlite3
-      - ansible
-      - putty
-      - mosh
-      - tree
-      - libpq-dev
-      - postgresql
       - colordiff
-      - pandoc
-      - lynx
-      - lftp
-      - whois
-      - python3-tk
-      - libpq5
-      - telnet
+      - cowsay
+      - curl
+      - finger
+      - htop
       - jq
+      - lftp
+      - libffi-dev
+      - libpq-dev
+      - libpq5
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - lynx
       - magic-wormhole
+      - mosh
+      - pandoc
+      - postgresql
+      - putty
+      - python3-tk
+      - snapd
+      - software-properties-common
+      - sqlite3
+      - telnet
+      - tree
+      - whois
+      - zlib1g-dev
     state: latest
 
 - name: Install lolcat

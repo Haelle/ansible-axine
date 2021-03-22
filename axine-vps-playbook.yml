@@ -1,22 +1,24 @@
 ---
 - hosts: axine
-  remote_user: '{{ user_1_name }}' #root
+  remote_user: '{{ user_1_name }}'
   become: true
   vars:
     server_ip: "{{ axine_ip }}"
   vars_files:
     - './secrets/users_secrets.yml'
-  environment:
-    DBUS_SESSION_BUS_ADDRESS: 'unix:abstract=/tmp/dbus-dlLfFBSth0,guid=1433a1d6adf840465c78abda5a291c93'
+    - './secrets/chloegaster.fr_secrets.yml'
 
   roles:
     - { role: base_packages,     tags: base }
-    - { role: nginx,             tags: ngnix, mina_deploy: true }
-    - { role: ruby,              tags: ruby }
     - { role: create_users,      users: "{{ server_users }}" }
+    - { role: haelle.vimrc,      tags: vim, become_user: "{{ user_1_name }}" }
+    - { role: haelle.oh_my_zsh,  users: ["{{ user_1_name }}"], tags: zsh }
     - { role: development_user,  users: "{{ server_users }}" }
-    - { role: python,            tags: python }
+    - { role: nginx,             tags: ngnix, mina_deploy: true }
     - { role: chloegaster.fr,    tags: chloegaster }
-
-    - role: nextcloud_client
-      tags: nextcloud
+    - role: haelle.certbot_ansible
+      certbot_admin_email: "{{ certbot_email }}"
+      domains_to_cert:
+        - chloegaster.fr
+      tags: certbot
+    - { role: nextcloud_client,  tags: nextcloud }

@@ -27,7 +27,10 @@ This Ansible configures:
 
 It needs Ansible community tasks:
 
-`ansible-galaxy collection install community.general`
+```
+ansible-galaxy collection install community.general
+ansible-galaxy collection install community.mysql
+```
 
 ## Basic command lines
 

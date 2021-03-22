@@ -1,11 +1,9 @@
 ---
 - name: Install PHP & utils
   apt:
-    name: "{{ item }}"
+    pkg:
+      - php
+      - php-curl
+      - php-fpm
+      - php-mysql
     state: latest
-  with_items:
-    - php
-    - php-curl
-    - php-fpm
-    - php-mysql
-    - python-mysqldb
